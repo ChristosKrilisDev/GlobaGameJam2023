@@ -1,9 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
-public class Tiles : MonoBehaviour
+public class Tile : MonoBehaviour
 {
     
     public enum State
@@ -28,6 +26,11 @@ public class Tiles : MonoBehaviour
     
     
     //call this to show/hide tiles
+    public void OnClick()
+    {
+        //
+    }
+    
     public void ChangeState(State newState)
     {
         TileState = newState;
