@@ -2,15 +2,15 @@
 using UnityEngine;
 namespace Settings
 {
-    public class MusicSettings
+    public static class MusicSettings
     {
         private const string MUSIC_KEY = "IsMuted";
-        private readonly Save _save;
+        private static Save _save;
 
-        private AudioSource _music;
-        private AudioSource _sfx;
-
-        public MusicSettings(Save save, AudioSource music, AudioSource sfx)
+        private static AudioSource _music;
+        private static AudioSource _sfx;
+        
+        public static void Init(Save save, AudioSource music, AudioSource sfx)
         {
             _save = save;
             _music = music;
@@ -18,7 +18,7 @@ namespace Settings
             Load();
         }
 
-        public void OnMusicChange()
+        public static void OnMusicChange()
         {
             if (PlayerPrefs.HasKey(MUSIC_KEY))
             {
@@ -31,7 +31,7 @@ namespace Settings
             MusicSave();
         }
 
-        private void MusicSave()
+        private static void MusicSave()
         {
             var index = PlayerPrefs.GetInt(MUSIC_KEY);
             var isMuted = index == 0;
@@ -46,7 +46,7 @@ namespace Settings
             GameController.Instance.OnMusicChange?.Invoke(!_save.IsMuted);
         }
 
-        private void Load()
+        private static void Load()
         {
             var index = PlayerPrefs.GetInt(MUSIC_KEY);
             var isMuted = index == 0;
@@ -55,5 +55,24 @@ namespace Settings
 
             GameController.Instance.OnMusicChange?.Invoke(!_save.IsMuted);
         }
+
+        
+        
+        
+        public static void PlayOneShot(AudioClip audioClip)
+        {
+            if (_sfx.isPlaying)
+            {
+                _sfx.Stop();
+            }
+            
+            _sfx.PlayOneShot(audioClip);
+        }
+        
+        public static void PlayOneShotOver(AudioClip audioClip)
+        {
+            _sfx.PlayOneShot(audioClip);
+        }
+        
     }
 }

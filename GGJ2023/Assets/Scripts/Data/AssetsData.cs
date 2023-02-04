@@ -5,4 +5,16 @@ public class AssetsData : ScriptableObject
 {
     public Sprite ShowTile;
     public Sprite HideTile;
+
+    [Space, Header("MUSIC")]
+    public AudioClip ThemeSong;
+    public AudioClip[] MouseClick;
+    public AudioClip[] MouseOver;
+    public AudioClip Dig;
+    public AudioClip DigRoot;
+    public AudioClip RadarSfx;
+    public AudioClip[] UiClick;
+    public AudioClip Win;
+    public AudioClip Defeat;
+    
 }

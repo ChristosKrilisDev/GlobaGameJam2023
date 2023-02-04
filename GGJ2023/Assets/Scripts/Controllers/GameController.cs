@@ -19,8 +19,10 @@ public class GameController : MonoBehaviour
     public UnityAction<int> OnScoreChange;
     public UnityAction<bool> OnMusicChange;
 
+    [Space,Header("DATA")]
     public Save Save;
-    public MusicSettings MusicSettings;
+    public AssetsData AssetsData;
+    [Space,Header("MUSIC")]
     [SerializeField] private AudioSource _music;
     [SerializeField] private AudioSource _sfx;
 
@@ -36,7 +38,7 @@ public class GameController : MonoBehaviour
 
         Instance = this;
         MapController = GetComponentInChildren<MapController>();
-        MusicSettings = new MusicSettings(Save, _music, _sfx);
+        MusicSettings.Init(Save, _music, _sfx);
         DontDestroyOnLoad(gameObject);
     }
 

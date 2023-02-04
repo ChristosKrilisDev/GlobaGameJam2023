@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using Settings;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -32,12 +33,15 @@ public class GuiManager : MonoBehaviour
     {
         _scoreTxt.text = value.ToString();
         PopUpAnimation(_scoreTxt.transform);
+        //todo: play sfx
     }
     
     private void OnLevelChange(int value)
     {
         _levelTxt.text = value.ToString();
         PopUpAnimation(_levelTxt.transform);
+        //todo: play sfx
+
     }
 
     private void OnMusicChange(bool isMuted)
@@ -51,7 +55,7 @@ public class GuiManager : MonoBehaviour
         GameController.Instance.OnScoreChange += OnScoreChange;
         GameController.Instance.OnMusicChange += OnMusicChange;
         
-        _musicButton.onClick.AddListener(GameController.Instance.MusicSettings.OnMusicChange);
+        _musicButton.onClick.AddListener(MusicSettings.OnMusicChange);
     }
 
     private void RemoveDelegates()
@@ -60,7 +64,7 @@ public class GuiManager : MonoBehaviour
         GameController.Instance.OnScoreChange -= OnScoreChange;
         GameController.Instance.OnMusicChange -= OnMusicChange;
         
-        _musicButton.onClick.RemoveListener(GameController.Instance.MusicSettings.OnMusicChange);
+        _musicButton.onClick.RemoveListener(MusicSettings.OnMusicChange);
 
     }
 

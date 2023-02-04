@@ -1,6 +1,7 @@
 using System;
 using DG.Tweening;
 using Enums;
+using Settings;
 using UnityEngine;
 
 public class CharacterControls : MonoBehaviour
@@ -62,7 +63,6 @@ public class CharacterControls : MonoBehaviour
 
     private void CheckMouseInput()
     {
-
         CheckLeftMouseClick();
         CheckRightMouseClick();
     }
@@ -92,11 +92,14 @@ public class CharacterControls : MonoBehaviour
         if (isLeftClick)
         {
             tile.OnClick();
+            //todo : play sfx
+            MusicSettings.PlayOneShot(GameController.Instance.AssetsData.MouseClick[0]);
             if(tile.TileState == TileState.Opened) return;
             PopUpAnimation(tile.transform);
         }
         else
         {
+            //todo : play sfx
             SpawnRadar(tile);
         }
     }

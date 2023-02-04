@@ -22,7 +22,7 @@ public class Radar : MonoBehaviour
             if (tileObj.TileType == TileType.Root)
             {
                 //todo : score function here or something
-                //and sfx/vfx
+                //todo: play sfx
             }
         }
     }

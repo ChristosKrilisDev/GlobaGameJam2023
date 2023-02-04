@@ -224,6 +224,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 634964833, guid: 54e9692a8df65fc42b406cb4634f81f0, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: b774cfee628ba8c4180ba448669a5ee5, type: 3}
     - target: {fileID: 1088534407632717141, guid: 54e9692a8df65fc42b406cb4634f81f0, type: 3}
       propertyPath: m_Name
       value: Main Camera
@@ -470,6 +474,10 @@ PrefabInstance:
       propertyPath: _music
       value: 
       objectReference: {fileID: 634964833}
+    - target: {fileID: 6596397940425504220, guid: 389b789d910ec994db960d58a7c50baf, type: 3}
+      propertyPath: AssetsData
+      value: 
+      objectReference: {fileID: 11400000, guid: 659a311e5a25706419e9594242f2f8ea, type: 2}
     - target: {fileID: 6596397940425504220, guid: 389b789d910ec994db960d58a7c50baf, type: 3}
       propertyPath: _cameraController
       value: 
