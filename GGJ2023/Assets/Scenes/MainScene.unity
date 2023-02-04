@@ -343,6 +343,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2021636510, guid: fa3d34355a653704f917cbfa176e3ab9, type: 3}
+      propertyPath: _levelTxt
+      value: 
+      objectReference: {fileID: 2420055509969445522}
     - target: {fileID: 2420055511438924552, guid: fa3d34355a653704f917cbfa176e3ab9, type: 3}
       propertyPath: m_Name
       value: GUI
@@ -433,6 +437,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa3d34355a653704f917cbfa176e3ab9, type: 3}
+--- !u!114 &2420055509969445522 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1562097570613304796, guid: fa3d34355a653704f917cbfa176e3ab9, type: 3}
+  m_PrefabInstance: {fileID: 2420055509969445521}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4970958857080068392
 PrefabInstance:
   m_ObjectHideFlags: 0

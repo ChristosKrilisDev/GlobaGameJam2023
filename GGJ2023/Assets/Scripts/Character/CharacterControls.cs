@@ -103,7 +103,7 @@ public class CharacterControls : MonoBehaviour
 
 #region Animations
 
-    private void PopUpAnimation(Transform objTrasform) //todo : bug on multi clicks
+    private void PopUpAnimation(Transform objTrasform)
     {
         var scale = Vector3.one;
         

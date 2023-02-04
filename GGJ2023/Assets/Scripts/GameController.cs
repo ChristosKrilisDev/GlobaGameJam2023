@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameController : MonoBehaviour
 {
@@ -10,10 +11,14 @@ public class GameController : MonoBehaviour
     public static GameController Instance { get; private set; }
 
     public MapController mapController { get; private set; }
+    public GuiManager GuiController { get; private set; }
+    public ScoreManager ScoreManager { get; private set; }
+
+
+    public UnityAction<int> OnLevelChange;
 
     private void Awake()
     {
-        // If there is an instance, and it's not me, delete myself.
 
         if (Instance != null && Instance != this)
         {
@@ -30,18 +35,14 @@ public class GameController : MonoBehaviour
     {
         if(level > 0) mapController.CleanMap();
         level++;
+        OnLevelChange?.Invoke(level);
         mapController.CreateMap();
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         GoToNextLevel();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }
