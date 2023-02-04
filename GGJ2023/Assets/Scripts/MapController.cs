@@ -35,11 +35,8 @@ public class MapController : MonoBehaviour
         }
     }
 
-    public List<GameObject> ReturnTiles()
+    public List<GameObject> ReturnTiles(int i, int j)
     {
-        int i = 3;
-        int j = 4;
-
         List<GameObject> nearTiles = new List<GameObject>();
 
         int x = 0;
@@ -61,14 +58,5 @@ public class MapController : MonoBehaviour
         }
 
         return nearTiles;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            ReturnTiles();
-        }
     }
 }

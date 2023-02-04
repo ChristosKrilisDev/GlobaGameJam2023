@@ -55,6 +55,7 @@ public class CharacterControls : MonoBehaviour
         }
         else
         {
+            GameController.Instance.mapController.ReturnTiles((int)tile.transform.position.x, (int)tile.transform.position.y);
             SpawnRadar(tile);
         }
     }
