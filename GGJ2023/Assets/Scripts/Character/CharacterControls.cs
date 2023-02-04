@@ -1,5 +1,6 @@
 using System;
 using DG.Tweening;
+using Enums;
 using UnityEngine;
 
 public class CharacterControls : MonoBehaviour
@@ -35,11 +36,20 @@ public class CharacterControls : MonoBehaviour
 
         //todo : performance issue incomingggg
         var hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-        if (hit == null || hit.collider == null) return;
+        Debug.Log(hit.collider);
+
+        if (hit == null || hit.collider == null)
+        {
+            _focusedGameObject = null;
+            return;
+        }
 
         if (hit.collider.gameObject == _focusedGameObject) return;
 
-        _focusedGameObject =  hit.collider.GetComponent<Tile>().gameObject;
+        var tile = hit.collider.GetComponent<Tile>();
+        if(tile != null && tile.TileState == TileState.Opened) return;
+        
+        _focusedGameObject =  tile.gameObject;
         PopUpAnimation(_focusedGameObject.transform);
     }
 
@@ -77,6 +87,7 @@ public class CharacterControls : MonoBehaviour
         if (isLeftClick)
         {
             tile.OnClick();
+            if(tile.TileState == TileState.Opened) return;
             PopUpAnimation(tile.transform);
         }
         else
