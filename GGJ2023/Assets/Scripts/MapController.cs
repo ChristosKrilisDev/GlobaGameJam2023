@@ -8,9 +8,9 @@ public class MapController : MonoBehaviour
     [SerializeField]
     private GameObject tilePrefab;
 
-    private int level = 1;
+    private int level = 2;
 
-    private GameObject[] tiles;
+    private GameObject[,] tiles;
 
     // Start is called before the first frame update
     void Start()
@@ -20,29 +20,55 @@ public class MapController : MonoBehaviour
 
     void CreateMap()
     {
-        tiles = new GameObject[(level * 2 + 1) * (level * 2 + 1)];
+        tiles = new GameObject[(level * 2) + 1, (level * 2) + 1];
         int x = 0;
         int y = 0;
-        for(int i = 0; i < tiles.Length; i++)
+
+        for(y = 0; y < ((level * 2) + 1); y++)
         {
-            GameObject tile = Instantiate(tilePrefab);
-            Debug.Log("I = " + i);
-            Debug.Log("X = " + x);
-            Debug.Log("Y = " + y);
-            tile.transform.position = new Vector3(x, y, 0.0f);
-            tiles[y * (level * 2 + 1) + x] = tile;
-            x++;
-            if (x >= (level * 2 + 1))
+            for (x = 0; x < ((level * 2) + 1); x++)
             {
-                x = 0;
-                y++;
+                GameObject tile = Instantiate(tilePrefab);
+                tile.transform.position = new Vector2(x, y);
+                tiles[x, y] = tile;
             }
         }
+    }
+
+    public List<GameObject> ReturnTiles()
+    {
+        int i = 3;
+        int j = 4;
+
+        List<GameObject> nearTiles = new List<GameObject>();
+
+        int x = 0;
+        int y = 0;
+
+        for (y = 0; y < ((level * 2) + 1); y++)
+        {
+            for (x = 0; x < ((level * 2) + 1); x++)
+            {
+
+                if((Mathf.Abs((x - i)) <= 1) && (Mathf.Abs((y - j)) <= 1))
+                {
+                    nearTiles.Add(tiles[x, y]);
+                    Debug.Log("Counter = " + nearTiles.Count);
+                    Debug.Log("X = " + x);
+                    Debug.Log("Y = " + y);
+                }
+            }
+        }
+
+        return nearTiles;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            ReturnTiles();
+        }
     }
 }
