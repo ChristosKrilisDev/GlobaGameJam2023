@@ -26,25 +26,24 @@ public class CharacterControls : MonoBehaviour
     private void Update()
     {
         OnMouseOver();
-        OnMouseExit();
         CheckMouseInput();
     }
 
     private void OnMouseOver()
     {
-        if(_focusedGameObject) return;
+        // if(_focusedGameObject) return;
 
+        //todo : performance issue incomingggg
         var hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
         if (hit == null || hit.collider == null) return;
-        
+
+        if (hit.collider.gameObject == _focusedGameObject) return;
+
         _focusedGameObject =  hit.collider.GetComponent<Tile>().gameObject;
         PopUpAnimation(_focusedGameObject.transform);
     }
 
-    private void OnMouseExit()
-    {
-        _focusedGameObject = null;
-    }
+ 
 
     private void CheckMouseInput()
     {
