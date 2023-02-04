@@ -9,8 +9,16 @@ public class Tile : MonoBehaviour
     public TileType TileType = TileType.None;
 
     //todo : move them to a asset collection script
-    [SerializeField] private Sprite _showTile;
-    [SerializeField] private Sprite _hideTile;
+    [SerializeField] private Sprite _setShowTile;
+    [SerializeField] private Sprite _setHideTile;
+    public Sprite SetShowTile
+    {
+        set => _setShowTile = value;
+    }
+    public Sprite SetHideTile
+    {
+        set => _setHideTile = value;
+    }
 
     private SpriteRenderer _mSprite;
 
@@ -38,12 +46,12 @@ public class Tile : MonoBehaviour
 
     private void Show()
     {
-        _mSprite.sprite = _showTile;
+        _mSprite.sprite = _setShowTile;
     }
 
     private void Hide()
     {
-        _mSprite.sprite = _hideTile;
+        _mSprite.sprite = _setHideTile;
     }
     
     //call this to show/hide tiles
