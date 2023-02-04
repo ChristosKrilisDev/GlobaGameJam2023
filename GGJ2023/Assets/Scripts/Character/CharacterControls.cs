@@ -88,15 +88,15 @@ public class CharacterControls : MonoBehaviour
 
     private void PopUpAnimation(Transform objTrasform) //todo : bug on multi clicks
     {
-        var scale = objTrasform.transform.localScale;
-
-        objTrasform.transform.localScale = scale;
+        var scale = Vector3.one;
+        
         objTrasform.transform.DOKill();
-
         objTrasform.transform.DOScale(new Vector3(1.1f, 1.1f, 1), 0.25f).SetEase(Ease.OutFlash).OnComplete(() =>
         {
             objTrasform.transform.DOScale(scale, 0.25f);
         });
+        
+        objTrasform.transform.localScale = scale;
     }
 
 #endregion
