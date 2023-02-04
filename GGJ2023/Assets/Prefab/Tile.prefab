@@ -99,8 +99,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TileState: 1
-  _showTile: {fileID: 0}
-  _hideTile: {fileID: 0}
+  _tileBase: {fileID: 0}
+  _showTile: {fileID: 380189023, guid: d6753d28ca556d447954bbc3bfb40538, type: 3}
+  _hideTile: {fileID: -927304599, guid: d6753d28ca556d447954bbc3bfb40538, type: 3}
 --- !u!61 &4029341274772710082
 BoxCollider2D:
   m_ObjectHideFlags: 0

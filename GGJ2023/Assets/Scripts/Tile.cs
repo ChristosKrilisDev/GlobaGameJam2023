@@ -1,7 +1,5 @@
-
-using System;
 using UnityEngine;
-using UnityEngine.Tilemaps;
+
 
 public class Tile : MonoBehaviour
 {
@@ -9,20 +7,13 @@ public class Tile : MonoBehaviour
     
     public enum State
     {
-        Open,
+        Show,
         Hide
     }
 
     public State TileState = State.Hide;
 
     //todo : move them to a asset collection script
-    [SerializeField] private TileBase _tileBase;
-
-    public static explicit operator Tile(TileBase v)
-    {
-        throw new NotImplementedException();
-    }
-
     [SerializeField] private Sprite _showTile;
     [SerializeField] private Sprite _hideTile;
 
@@ -38,7 +29,15 @@ public class Tile : MonoBehaviour
     //call this to show/hide tiles
     public void OnClick()
     {
-        //
+        if (TileState == State.Show) 
+        {
+            ChangeState(State.Hide);
+        }
+        else
+        {
+            ChangeState(State.Show);
+        }
+       
     }
     
     public void ChangeState(State newState)

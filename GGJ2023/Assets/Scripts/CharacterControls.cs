@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class CharacterControls : MonoBehaviour
 {
@@ -36,12 +37,13 @@ public class CharacterControls : MonoBehaviour
 
         if (isLeftClick)
         {
-            Debug.Log("Left : You click a tile");
+            tile.OnClick();
         }
         else
         {
-            Debug.Log("Right : safe digging");
+            tile.OnClick();
         }
     }
+    
     
 }
