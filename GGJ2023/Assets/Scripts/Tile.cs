@@ -1,8 +1,10 @@
 
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class Tile : MonoBehaviour
 {
+    
     
     public enum State
     {
@@ -13,6 +15,7 @@ public class Tile : MonoBehaviour
     public State TileState = State.Hide;
 
     //todo : move them to a asset collection script
+    [SerializeField] private TileBase _tileBase;
     [SerializeField] private Sprite _showTile;
     [SerializeField] private Sprite _hideTile;
 
