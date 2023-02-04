@@ -9,7 +9,9 @@ public class MapController : MonoBehaviour
     private GameObject tilePrefab;
 
     [HideInInspector]
-    public GameObject[,] tiles;
+    private GameObject[,] tiles;
+
+    public Sprite rootDefault;
 
     public void CreateMap()
     {
@@ -31,6 +33,8 @@ public class MapController : MonoBehaviour
                 tiles[x, y] = tile;
             }
         }
+
+        Distribute(0.3f);
     }
 
     public void CleanMap()
@@ -72,5 +76,39 @@ public class MapController : MonoBehaviour
         }
 
         return nearTiles;
+    }
+
+    public void Distribute(float perc)
+    {
+        
+        bool finish = false;
+        int selectedCount = 0;
+
+        List<GameObject> tileList = new List<GameObject>();
+        foreach (GameObject tile in tiles)
+        {
+            if ((tile.transform.position.x == GameController.Instance.level))
+            {
+                if ((tile.transform.position.y == GameController.Instance.level)) continue;
+            }
+
+            tileList.Add(tile);
+
+        }
+
+        int distributionNumber = (int)(perc * tileList.Count);
+        
+        while (!finish)
+        {
+            int randomIndex = Random.Range(0, tileList.Count);
+            Sprite s = rootDefault;
+            tileList[randomIndex].GetComponent<Tile>().SetShowTile = s;
+            tileList[randomIndex].GetComponent<Tile>().TileType = Enums.TileType.Root;
+            tileList.Remove(tileList[randomIndex]);
+            selectedCount++;
+
+            if (selectedCount >= distributionNumber) finish = true;
+        }
+
     }
 }

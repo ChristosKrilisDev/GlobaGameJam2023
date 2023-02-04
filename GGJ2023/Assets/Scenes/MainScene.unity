@@ -459,6 +459,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MapGenerator
       objectReference: {fileID: 0}
+    - target: {fileID: 4970958857990979489, guid: c499ffc88998c074baa6ef5b7eca0738, type: 3}
+      propertyPath: rootDefault
+      value: 
+      objectReference: {fileID: -647719436, guid: d6753d28ca556d447954bbc3bfb40538, type: 3}
     - target: {fileID: 4970958857990979490, guid: c499ffc88998c074baa6ef5b7eca0738, type: 3}
       propertyPath: m_RootOrder
       value: 0
