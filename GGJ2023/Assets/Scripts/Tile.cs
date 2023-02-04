@@ -1,50 +1,38 @@
+using System;
+using Enums;
 using UnityEngine;
-
 
 public class Tile : MonoBehaviour
 {
-    
-    
-    public enum State
-    {
-        Show,
-        Hide
-    }
 
-    public State TileState = State.Hide;
+    public TileState TileState = TileState.Hidden;
+    public TileType TileType = TileType.None;
 
     //todo : move them to a asset collection script
     [SerializeField] private Sprite _showTile;
     [SerializeField] private Sprite _hideTile;
 
-    
     private SpriteRenderer _mSprite;
 
     private void Awake()
     {
         _mSprite = GetComponent<SpriteRenderer>();
     }
-    
-    
-    //call this to show/hide tiles
-    public void OnClick()
+    private void Start()
     {
-        if (TileState == State.Show) 
-        {
-            ChangeState(State.Hide);
-        }
-        else
-        {
-            ChangeState(State.Show);
-        }
-       
+        Init();
+    }
+    private void Init()
+    {
+        ChangeState(TileState.Hidden);
     }
     
-    public void ChangeState(State newState)
+
+    private void ChangeState(TileState newState)
     {
         TileState = newState;
 
-        if(TileState == State.Hide) Hide();
+        if (TileState == TileState.Hidden) Hide();
         else Show();
     }
 
@@ -57,6 +45,18 @@ public class Tile : MonoBehaviour
     {
         _mSprite.sprite = _hideTile;
     }
+    
+    //call this to show/hide tiles
+    public void OnClick()
+    {
+        if (TileState == TileState.Opened) return; //todo : maybe play some sfx here
 
+        //todo : check tile type
+        ChangeState(TileState.Opened);
+    }
 
+    public void PlaceObject(GameObject obj)
+    {
+        obj.transform.localPosition = transform.localPosition;
+    }
 }

@@ -1,9 +1,17 @@
+using System;
+using DefaultNamespace;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 
 public class CharacterControls : MonoBehaviour
 {
-    
+    [SerializeField]private CharacterParams _characterParams;
+    [SerializeField]private Radar _radarPrefab;
+
+    private void Start()
+    {
+        _characterParams.Reset();
+    }
+
     private void Update()
     {
         CheckMouseInput();
@@ -34,16 +42,28 @@ public class CharacterControls : MonoBehaviour
         
         var tile = hit.collider.GetComponent<Tile>();
         if (tile == null) return;
-
+        
         if (isLeftClick)
         {
             tile.OnClick();
         }
         else
         {
-            tile.OnClick();
+            SpawnRadar(tile);
         }
     }
-    
-    
+
+    private void SpawnRadar(Tile tile)
+    {
+        if (!_characterParams.CanSpawnRadar())
+        {
+            Debug.Log("No more radars available");
+            return;
+        }
+        
+        //spawn a radar at position
+        var newRadar = Instantiate(_radarPrefab);
+        tile.PlaceObject(newRadar.gameObject);
+    }
+
 }
