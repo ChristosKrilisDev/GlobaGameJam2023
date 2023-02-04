@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.ComponentModel.Design;
 using DG.Tweening;
 using UnityEngine;
 
@@ -11,6 +9,8 @@ public class CharacterControls : MonoBehaviour
     [SerializeField] private ScoreManager _scoreManager;
     [SerializeField] private GuiManager _guiManager; //remove from here
 
+    private GameObject _focusedGameObject = null;
+
     private void Start()
     {
         _characterParams.Reset();
@@ -20,12 +20,30 @@ public class CharacterControls : MonoBehaviour
     private void Init()
     {
         _scoreManager = new ScoreManager(_characterParams.RadarsSpawnLimit);
+        _focusedGameObject = null;
     }
 
     private void Update()
     {
-        // OnMouseOver();
+        OnMouseOver();
+        OnMouseExit();
         CheckMouseInput();
+    }
+
+    private void OnMouseOver()
+    {
+        if(_focusedGameObject) return;
+
+        var hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+        if (hit == null || hit.collider == null) return;
+        
+        _focusedGameObject =  hit.collider.GetComponent<Tile>().gameObject;
+        PopUpAnimation(_focusedGameObject.transform);
+    }
+
+    private void OnMouseExit()
+    {
+        _focusedGameObject = null;
     }
 
     private void CheckMouseInput()
@@ -91,7 +109,7 @@ public class CharacterControls : MonoBehaviour
         var scale = Vector3.one;
         
         objTrasform.transform.DOKill();
-        objTrasform.transform.DOScale(new Vector3(1.1f, 1.1f, 1), 0.25f).SetEase(Ease.OutFlash).OnComplete(() =>
+        objTrasform.transform.DOScale(new Vector3(1.05f, 1.05f, 1), 0.25f).SetEase(Ease.OutFlash).OnComplete(() =>
         {
             objTrasform.transform.DOScale(scale, 0.25f);
         });
