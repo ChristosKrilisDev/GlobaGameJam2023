@@ -8,8 +8,8 @@ public class MapController : MonoBehaviour
     [SerializeField]
     private GameObject tilePrefab;
 
-
-    private GameObject[,] tiles;
+    [HideInInspector]
+    public GameObject[,] tiles;
 
     public void CreateMap()
     {
