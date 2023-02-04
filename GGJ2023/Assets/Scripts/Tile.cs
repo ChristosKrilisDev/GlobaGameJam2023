@@ -1,4 +1,5 @@
 
+using System;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -16,6 +17,12 @@ public class Tile : MonoBehaviour
 
     //todo : move them to a asset collection script
     [SerializeField] private TileBase _tileBase;
+
+    public static explicit operator Tile(TileBase v)
+    {
+        throw new NotImplementedException();
+    }
+
     [SerializeField] private Sprite _showTile;
     [SerializeField] private Sprite _hideTile;
 
