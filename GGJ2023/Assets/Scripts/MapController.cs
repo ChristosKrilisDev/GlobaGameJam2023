@@ -8,29 +8,45 @@ public class MapController : MonoBehaviour
     [SerializeField]
     private GameObject tilePrefab;
 
-    private int level = 2;
 
     private GameObject[,] tiles;
 
-    // Start is called before the first frame update
-    void Start()
+    public void CreateMap()
     {
-        CreateMap();
-    }
-
-    void CreateMap()
-    {
-        tiles = new GameObject[(level * 2) + 1, (level * 2) + 1];
         int x = 0;
         int y = 0;
 
-        for(y = 0; y < ((level * 2) + 1); y++)
+        GameController.Instance.groundTilesLeft = (GameController.Instance.level * 2 + 1) * (GameController.Instance.level * 2 + 1);
+        tiles = new GameObject[(GameController.Instance.level * 2) + 1, (GameController.Instance.level * 2) + 1];
+        x = 0;
+        y = 0;
+
+        for(y = 0; y < ((GameController.Instance.level * 2) + 1); y++)
         {
-            for (x = 0; x < ((level * 2) + 1); x++)
+            for (x = 0; x < ((GameController.Instance.level * 2) + 1); x++)
             {
                 GameObject tile = Instantiate(tilePrefab);
                 tile.transform.position = new Vector2(x, y);
                 tiles[x, y] = tile;
+            }
+        }
+    }
+
+    public void CleanMap()
+    {
+        for (int j = 0; j < ((GameController.Instance.level * 2) + 1); j++)
+        {
+            for (int i = 0; i < ((GameController.Instance.level * 2) + 1); i++)
+            {
+                try
+                {
+                    Destroy(tiles[i, j]);
+                }
+                catch
+                {
+                    Debug.Log("Cannot destroy game object.");
+                    break;
+                }
             }
         }
     }
@@ -42,17 +58,14 @@ public class MapController : MonoBehaviour
         int x = 0;
         int y = 0;
 
-        for (y = 0; y < ((level * 2) + 1); y++)
+        for (y = 0; y < ((GameController.Instance.level * 2) + 1); y++)
         {
-            for (x = 0; x < ((level * 2) + 1); x++)
+            for (x = 0; x < ((GameController.Instance.level * 2) + 1); x++)
             {
 
                 if((Mathf.Abs((x - i)) <= 1) && (Mathf.Abs((y - j)) <= 1))
                 {
                     nearTiles.Add(tiles[x, y]);
-                    Debug.Log("Counter = " + nearTiles.Count);
-                    Debug.Log("X = " + x);
-                    Debug.Log("Y = " + y);
                 }
             }
         }

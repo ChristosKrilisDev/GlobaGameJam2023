@@ -53,6 +53,19 @@ public class Tile : MonoBehaviour
 
         //todo : check tile type
         ChangeState(TileState.Opened);
+
+        // if tile is ground type
+        GameController.Instance.groundTilesLeft--;
+        if(GameController.Instance.groundTilesLeft <= 0)
+        {
+            GameController.Instance.GoToNextLevel();
+        }
+
+
+        // if tile is root type
+        //GameController.Instance.rootTilesLeft--;
+
+
     }
 
     public void PlaceObject(GameObject obj)
