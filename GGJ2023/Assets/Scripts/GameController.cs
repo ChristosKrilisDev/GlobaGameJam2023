@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
     public static GameController Instance { get; private set; }
 
     public MapController mapController { get; private set; }
+    public CameraController cameraController { get; private set; }
     public GuiManager GuiController { get; private set; }
     public ScoreManager ScoreManager { get; set; }
 
@@ -30,6 +31,7 @@ public class GameController : MonoBehaviour
 
         Instance = this;
         mapController = GetComponentInChildren<MapController>();
+        cameraController = GetComponentInChildren<CameraController>();
         DontDestroyOnLoad(gameObject);
     }
 
@@ -38,6 +40,8 @@ public class GameController : MonoBehaviour
         if(level > 0) mapController.CleanMap();
         level++;
         OnLevelChange?.Invoke(level);
+        cameraController.MoveCamera();
+        StartCoroutine(cameraController.ChangeCameraSize());
         mapController.CreateMap();
     }
 

@@ -19,7 +19,6 @@ public class MapController : MonoBehaviour
         int y = 0;
         int tilesOfLevel = (GameController.Instance.level * 2 + 1);
         GameController.Instance.groundTilesLeft = tilesOfLevel * tilesOfLevel;
-        Camera.main.transform.position = new Vector3(GameController.Instance.level, GameController.Instance.level, -10.0f);
         tiles = new GameObject[tilesOfLevel, tilesOfLevel];
         x = 0;
         y = 0;
