@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Data;
 using Settings;
 using UnityEngine;
@@ -24,24 +21,25 @@ public class GameController : MonoBehaviour
 
     public Save Save;
     public MusicSettings MusicSettings;
-    
-    
-    
+    [SerializeField] private AudioSource _music;
+    [SerializeField] private AudioSource _sfx;
+
     public static GameController Instance { get; private set; }
     private void Awake()
     {
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
+
             return;
         }
 
         Instance = this;
         MapController = GetComponentInChildren<MapController>();
-        MusicSettings = new MusicSettings(Save);
+        MusicSettings = new MusicSettings(Save, _music, _sfx);
         DontDestroyOnLoad(gameObject);
     }
-    
+
     void Start()
     {
         GoToNextLevel();
@@ -49,16 +47,12 @@ public class GameController : MonoBehaviour
 
     public void GoToNextLevel()
     {
-        if(Level > 0) MapController.CleanMap();
+        if (Level > 0) MapController.CleanMap();
         Level++;
         OnLevelChange?.Invoke(Level);
         _cameraController.MoveCamera();
         StartCoroutine(_cameraController.ChangeCameraSize());
         MapController.CreateMap();
     }
-
-    
-    
-
 
 }
