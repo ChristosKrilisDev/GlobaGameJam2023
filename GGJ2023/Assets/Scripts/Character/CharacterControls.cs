@@ -12,6 +12,11 @@ public class CharacterControls : MonoBehaviour
 
     private GameObject _focusedGameObject = null;
 
+    private void Awake()
+    {
+
+    }
+    
     private void Start()
     {
         _characterParams.Reset();
@@ -21,6 +26,7 @@ public class CharacterControls : MonoBehaviour
     private void Init()
     {
         _scoreManager = new ScoreManager(_characterParams.RadarsSpawnLimit);
+        GameController.Instance.ScoreManager = _scoreManager;
         _focusedGameObject = null;
     }
 

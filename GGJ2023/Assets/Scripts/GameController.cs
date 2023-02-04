@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,10 +13,11 @@ public class GameController : MonoBehaviour
 
     public MapController mapController { get; private set; }
     public GuiManager GuiController { get; private set; }
-    public ScoreManager ScoreManager { get; private set; }
+    public ScoreManager ScoreManager { get; set; }
 
 
     public UnityAction<int> OnLevelChange;
+    public UnityAction<int> OnScoreChange;
 
     private void Awake()
     {
@@ -44,5 +46,11 @@ public class GameController : MonoBehaviour
         GoToNextLevel();
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.A))
+            ScoreManager.IncreaseScore();
+        
+    }
 
 }

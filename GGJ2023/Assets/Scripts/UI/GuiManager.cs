@@ -9,14 +9,6 @@ public class GuiManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _scoreTxt;
     [SerializeField] private TextMeshProUGUI _levelTxt;
 
-    public UnityAction<int> OnScoreChanged;
-
-    private void ChangeScore()
-    {
-        var x = OnScoreChanged;
-        _scoreTxt.text = x.ToString();
-    }
-
     private void OnEnable()
     {
         Init();
@@ -30,17 +22,15 @@ public class GuiManager : MonoBehaviour
         AddDelegates();
     }
 
-    private void OnScoreChange()
+    private void OnScoreChange(int value)
     {
-        //change
-        _levelTxt.text = GameController.Instance.level.ToString();
-        PopUpAnimation(_levelTxt.transform);
+        _scoreTxt.text = value.ToString();
+        PopUpAnimation(_scoreTxt.transform);
     }
     
-    private void OnLevelChange(int level)
+    private void OnLevelChange(int value)
     {
-        OnScoreChange();
-        _levelTxt.text = GameController.Instance.level.ToString();
+        _levelTxt.text = value.ToString();
         PopUpAnimation(_levelTxt.transform);
     }
 
@@ -48,6 +38,7 @@ public class GuiManager : MonoBehaviour
     private void AddDelegates()
     {
         GameController.Instance.OnLevelChange += OnLevelChange;
+        GameController.Instance.OnScoreChange += OnScoreChange;
 
     }
 

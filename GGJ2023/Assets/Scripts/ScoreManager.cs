@@ -15,21 +15,38 @@
         _radarLimit = radarLimit;
         Init();
     }
-
-    private void AddActions()
-    {
-        
-    }
+    
 
     private void Init()
     {
         CurrentScore = 0;
     }
 
-    private void CalculateScore() //fix
+    public void IncreaseScore()
     {
-        _currentScore += - 1;
-        // OnScoreChanged?.Invoke(1);
+        _currentScore += 1;
+        GameController.Instance.OnScoreChange?.Invoke(_currentScore);
+    }
+    
+    private void IncreaseScoreValue(int value)
+    {
+        _currentScore += value;
+        GameController.Instance.OnScoreChange?.Invoke(_currentScore);
+
+    }
+    
+    public void DecreaseScore()
+    {
+        _currentScore -= 1;
+        GameController.Instance.OnScoreChange?.Invoke(_currentScore);
+
+    }
+    
+    private void DecreaseScoreValue(int value)
+    {
+        _currentScore -= value;
+        GameController.Instance.OnScoreChange?.Invoke(_currentScore);
+
     }
     
 }
