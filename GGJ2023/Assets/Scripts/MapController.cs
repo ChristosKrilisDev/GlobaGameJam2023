@@ -15,15 +15,16 @@ public class MapController : MonoBehaviour
     {
         int x = 0;
         int y = 0;
-
-        GameController.Instance.groundTilesLeft = (GameController.Instance.level * 2 + 1) * (GameController.Instance.level * 2 + 1);
-        tiles = new GameObject[(GameController.Instance.level * 2) + 1, (GameController.Instance.level * 2) + 1];
+        int tilesOfLevel = (GameController.Instance.level * 2 + 1);
+        GameController.Instance.groundTilesLeft = tilesOfLevel * tilesOfLevel;
+        Camera.main.transform.position = new Vector3(GameController.Instance.level, GameController.Instance.level, -10.0f);
+        tiles = new GameObject[tilesOfLevel, tilesOfLevel];
         x = 0;
         y = 0;
 
-        for(y = 0; y < ((GameController.Instance.level * 2) + 1); y++)
+        for(y = 0; y < tilesOfLevel; y++)
         {
-            for (x = 0; x < ((GameController.Instance.level * 2) + 1); x++)
+            for (x = 0; x < tilesOfLevel; x++)
             {
                 GameObject tile = Instantiate(tilePrefab);
                 tile.transform.position = new Vector2(x, y);
