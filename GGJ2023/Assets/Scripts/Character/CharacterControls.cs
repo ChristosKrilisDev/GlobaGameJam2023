@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterControls : MonoBehaviour
@@ -55,7 +56,6 @@ public class CharacterControls : MonoBehaviour
         }
         else
         {
-            GameController.Instance.mapController.ReturnTiles((int)tile.transform.position.x, (int)tile.transform.position.y);
             SpawnRadar(tile);
         }
     }
@@ -68,9 +68,10 @@ public class CharacterControls : MonoBehaviour
             return;
         }
         
-        //spawn a radar at position
         var newRadar = Instantiate(_radarPrefab);
-        // newRadar.SetTilesList( /*addd list here MapController.GetList()*/);
+        _characterParams.IncreaseRadarCounter();
+        var tilesList = GameController.Instance.mapController.ReturnTiles((int)tile.transform.position.x, (int)tile.transform.position.y);
+        newRadar.SetTilesList(tilesList);
         tile.PlaceObject(newRadar.gameObject);
     }
 

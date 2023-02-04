@@ -12,5 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a14322b93484682b5fdc2e83812d89b, type: 3}
   m_Name: CharacterParams
   m_EditorClassIdentifier: 
-  RadarsSpawnCount: 5
-  CurrentRadarsSpawned: 0
+  RadarsSpawnLimit: 5
