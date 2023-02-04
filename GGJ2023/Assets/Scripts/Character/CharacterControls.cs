@@ -1,15 +1,21 @@
-using System;
-using DefaultNamespace;
 using UnityEngine;
 
 public class CharacterControls : MonoBehaviour
 {
     [SerializeField]private CharacterParams _characterParams;
     [SerializeField]private Radar _radarPrefab;
+    [SerializeField] private ScoreManager _scoreManager;
+    [SerializeField] private GuiManager _guiManager; //remove from here
 
     private void Start()
     {
         _characterParams.Reset();
+        Init();
+    }
+
+    private void Init()
+    {
+        _scoreManager = new ScoreManager(_characterParams.RadarsSpawnLimit);
     }
 
     private void Update()
@@ -63,6 +69,7 @@ public class CharacterControls : MonoBehaviour
         
         //spawn a radar at position
         var newRadar = Instantiate(_radarPrefab);
+        // newRadar.SetTilesList( /*addd list here MapController.GetList()*/);
         tile.PlaceObject(newRadar.gameObject);
     }
 

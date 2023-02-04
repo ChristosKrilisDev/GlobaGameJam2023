@@ -3,12 +3,12 @@
 [CreateAssetMenu(fileName = "CharacterParams", menuName = "CharacterParams")]
 public class CharacterParams : ScriptableObject
 {
-    public int RadarsSpawnCount;
+    public int RadarsSpawnLimit;
     private int _currentRadarsSpawned;
 
     public bool CanSpawnRadar()
     {
-        return _currentRadarsSpawned < RadarsSpawnCount;
+        return _currentRadarsSpawned < RadarsSpawnLimit;
     }
 
     public void Reset()
