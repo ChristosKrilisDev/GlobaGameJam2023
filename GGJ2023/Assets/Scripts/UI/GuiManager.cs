@@ -1,13 +1,19 @@
 ﻿using DG.Tweening;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class GuiManager : MonoBehaviour
 {
-
+    [Space, Header("Text")]
     [SerializeField] private TextMeshProUGUI _scoreTxt;
     [SerializeField] private TextMeshProUGUI _levelTxt;
+
+    [Space, Header("Sound")]
+    [SerializeField] private Button _musicButton;
+    [SerializeField] private Sprite _musicOn;
+    [SerializeField] private Sprite _musicOff;
+    
 
     private void OnEnable()
     {
@@ -17,7 +23,7 @@ public class GuiManager : MonoBehaviour
     private void Init()
     {
         _scoreTxt.text = "0" ;
-        _levelTxt.text = GameController.Instance.level.ToString();
+        _levelTxt.text = GameController.Instance.Level.ToString();
         
         AddDelegates();
     }
@@ -34,22 +40,33 @@ public class GuiManager : MonoBehaviour
         PopUpAnimation(_levelTxt.transform);
     }
 
-
+    private void OnMusicChange(bool isMuted)
+    {
+        _musicButton.image.sprite = isMuted? _musicOff : _musicOn;
+    }
+    
     private void AddDelegates()
     {
         GameController.Instance.OnLevelChange += OnLevelChange;
         GameController.Instance.OnScoreChange += OnScoreChange;
-
+        GameController.Instance.OnMusicChange += OnMusicChange;
+        
+        _musicButton.onClick.AddListener(GameController.Instance.MusicSettings.OnMusicChange);
     }
 
     private void RemoveDelegates()
     {
         GameController.Instance.OnLevelChange -= OnLevelChange;
+        GameController.Instance.OnScoreChange -= OnScoreChange;
+        GameController.Instance.OnMusicChange -= OnMusicChange;
+        
+        _musicButton.onClick.RemoveListener(GameController.Instance.MusicSettings.OnMusicChange);
 
     }
-    
-    
-    
+
+
+#region Animations
+
     private void PopUpAnimation(Transform objTrasform)
     {
         var scale = Vector3.one;
@@ -62,5 +79,8 @@ public class GuiManager : MonoBehaviour
         
         objTrasform.transform.localScale = scale;
     }
+
+#endregion
+
     
 }

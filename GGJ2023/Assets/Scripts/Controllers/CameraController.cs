@@ -12,7 +12,7 @@ public class CameraController : MonoBehaviour
 
     public void MoveCamera()
     {
-        gameCamera.transform.position = new Vector3(GameController.Instance.level, GameController.Instance.level, -10.0f);
+        gameCamera.transform.position = new Vector3(GameController.Instance.Level, GameController.Instance.Level, -10.0f);
     }
 
     public IEnumerator ChangeCameraSize()

@@ -17,8 +17,8 @@ public class MapController : MonoBehaviour
     {
         int x = 0;
         int y = 0;
-        int tilesOfLevel = (GameController.Instance.level * 2 + 1);
-        GameController.Instance.groundTilesLeft = tilesOfLevel * tilesOfLevel;
+        int tilesOfLevel = (GameController.Instance.Level * 2 + 1);
+        GameController.Instance.GroundTilesLeft = tilesOfLevel * tilesOfLevel;
         tiles = new GameObject[tilesOfLevel, tilesOfLevel];
         x = 0;
         y = 0;
@@ -38,9 +38,9 @@ public class MapController : MonoBehaviour
 
     public void CleanMap()
     {
-        for (int j = 0; j < ((GameController.Instance.level * 2) + 1); j++)
+        for (int j = 0; j < ((GameController.Instance.Level * 2) + 1); j++)
         {
-            for (int i = 0; i < ((GameController.Instance.level * 2) + 1); i++)
+            for (int i = 0; i < ((GameController.Instance.Level * 2) + 1); i++)
             {
                 try
                 {
@@ -62,9 +62,9 @@ public class MapController : MonoBehaviour
         int x = 0;
         int y = 0;
 
-        for (y = 0; y < ((GameController.Instance.level * 2) + 1); y++)
+        for (y = 0; y < ((GameController.Instance.Level * 2) + 1); y++)
         {
-            for (x = 0; x < ((GameController.Instance.level * 2) + 1); x++)
+            for (x = 0; x < ((GameController.Instance.Level * 2) + 1); x++)
             {
 
                 if((Mathf.Abs((x - i)) <= 1) && (Mathf.Abs((y - j)) <= 1))
@@ -86,9 +86,9 @@ public class MapController : MonoBehaviour
         List<GameObject> tileList = new List<GameObject>();
         foreach (GameObject tile in tiles)
         {
-            if ((tile.transform.position.x == GameController.Instance.level))
+            if ((tile.transform.position.x == GameController.Instance.Level))
             {
-                if ((tile.transform.position.y == GameController.Instance.level)) continue;
+                if ((tile.transform.position.y == GameController.Instance.Level)) continue;
             }
 
             tileList.Add(tile);

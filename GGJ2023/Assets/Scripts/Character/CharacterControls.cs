@@ -42,7 +42,6 @@ public class CharacterControls : MonoBehaviour
 
         //todo : performance issue incomingggg
         var hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
-        Debug.Log(hit.collider);
 
         if (hit == null || hit.collider == null)
         {
@@ -113,7 +112,7 @@ public class CharacterControls : MonoBehaviour
 
         var newRadar = Instantiate(_radarPrefab);
         _characterParams.IncreaseRadarCounter();
-        var tilesList = GameController.Instance.mapController.ReturnTiles((int)tile.transform.position.x, (int)tile.transform.position.y);
+        var tilesList = GameController.Instance.MapController.ReturnTiles((int)tile.transform.position.x, (int)tile.transform.position.y);
         newRadar.SetTilesList(tilesList);
         tile.PlaceObject(newRadar.gameObject);
     }

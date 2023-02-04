@@ -1,28 +1,35 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Data;
+using Settings;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class GameController : MonoBehaviour
 {
 
-    public int groundTilesLeft, rootTilesLeft, level = 0;
+    [HideInInspector]
+    public int GroundTilesLeft, RootTilesLeft, Level = 0;
 
-    public static GameController Instance { get; private set; }
+    public MapController MapController { get; private set; }
 
-    public MapController mapController { get; private set; }
-    public CameraController cameraController { get; private set; }
-    public GuiManager GuiController { get; private set; }
+    public GuiManager GuiController { get; set; }
     public ScoreManager ScoreManager { get; set; }
-
+    [SerializeField] private CameraController _cameraController;
 
     public UnityAction<int> OnLevelChange;
     public UnityAction<int> OnScoreChange;
+    public UnityAction<bool> OnMusicChange;
 
+    public Save Save;
+    public MusicSettings MusicSettings;
+    
+    
+    
+    public static GameController Instance { get; private set; }
     private void Awake()
     {
-
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -30,31 +37,28 @@ public class GameController : MonoBehaviour
         }
 
         Instance = this;
-        mapController = GetComponentInChildren<MapController>();
-        cameraController = GetComponentInChildren<CameraController>();
+        MapController = GetComponentInChildren<MapController>();
+        MusicSettings = new MusicSettings(Save);
         DontDestroyOnLoad(gameObject);
     }
-
-    public void GoToNextLevel()
-    {
-        if(level > 0) mapController.CleanMap();
-        level++;
-        OnLevelChange?.Invoke(level);
-        cameraController.MoveCamera();
-        StartCoroutine(cameraController.ChangeCameraSize());
-        mapController.CreateMap();
-    }
-
+    
     void Start()
     {
         GoToNextLevel();
     }
 
-    private void Update()
+    public void GoToNextLevel()
     {
-        if(Input.GetKeyDown(KeyCode.A))
-            ScoreManager.IncreaseScore();
-        
+        if(Level > 0) MapController.CleanMap();
+        Level++;
+        OnLevelChange?.Invoke(Level);
+        _cameraController.MoveCamera();
+        StartCoroutine(_cameraController.ChangeCameraSize());
+        MapController.CreateMap();
     }
+
+    
+    
+
 
 }

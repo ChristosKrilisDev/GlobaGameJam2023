@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "CharacterParams", menuName = "CharacterParams")]
+[CreateAssetMenu(fileName = "CharacterParams", menuName = "GGJ/CharacterParams")]
 public class CharacterParams : ScriptableObject
 {
     public int RadarsSpawnLimit;

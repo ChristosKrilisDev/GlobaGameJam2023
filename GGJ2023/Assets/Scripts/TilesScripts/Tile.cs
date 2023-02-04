@@ -63,8 +63,8 @@ public class Tile : MonoBehaviour
         ChangeState(TileState.Opened);
 
         // if tile is ground type
-        GameController.Instance.groundTilesLeft--;
-        if(GameController.Instance.groundTilesLeft <= 0)
+        GameController.Instance.GroundTilesLeft--;
+        if(GameController.Instance.GroundTilesLeft <= 0)
         {
             GameController.Instance.GoToNextLevel();
         }
