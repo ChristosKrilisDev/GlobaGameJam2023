@@ -38,8 +38,12 @@ public class Radar : MonoBehaviour
         if(!_isReady) return;
         
         var lerpedColor = Color.Lerp(_color, _darkColor, Mathf.PingPong(Time.time, 1));
+        var alpha = Mathf.Lerp(0.1f, 0.3f, Mathf.PingPong(Time.time, 1));
         _light.color = lerpedColor;
         _backlight.color = lerpedColor;
+        
+        lerpedColor.a = alpha;
+        _areaSpriteRender.color = lerpedColor;
     }
 
     public void SetTilesList(List<GameObject> tiles)
