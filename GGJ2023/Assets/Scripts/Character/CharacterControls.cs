@@ -99,8 +99,10 @@ public class CharacterControls : MonoBehaviour
         }
         else
         {
+            var hasChild = tile.transform.childCount;
+            if(hasChild >= 1) return;
+            
             MusicSettings.PlayOneShot(GameController.Instance.AssetsData.Dig);
-            //todo : play sfx
             SpawnRadar(tile);
         }
     }
