@@ -28,7 +28,7 @@
         GameController.Instance.OnScoreChange?.Invoke(_currentScore);
     }
     
-    private void IncreaseScoreValue(int value)
+    public void IncreaseScoreValue(int value)
     {
         _currentScore += value;
         GameController.Instance.OnScoreChange?.Invoke(_currentScore);
@@ -42,7 +42,7 @@
 
     }
     
-    private void DecreaseScoreValue(int value)
+    public void DecreaseScoreValue(int value)
     {
         _currentScore -= value;
         GameController.Instance.OnScoreChange?.Invoke(_currentScore);

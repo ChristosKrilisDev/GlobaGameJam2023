@@ -9,51 +9,57 @@ namespace Settings
 
         private static AudioSource _music;
         private static AudioSource _sfx;
+
+        private static bool _isMuted;
         
         public static void Init(Save save, AudioSource music, AudioSource sfx)
         {
             _save = save;
             _music = music;
             _sfx = sfx;
-            Load();
+            // Load();
+            _isMuted = false;
+            GameController.Instance.OnMusicChange?.Invoke(_isMuted);
         }
 
         public static void OnMusicChange()
         {
-            if (PlayerPrefs.HasKey(MUSIC_KEY))
-            {
-                MusicSave();
-
-                return;
-            }
-
-            PlayerPrefs.SetInt(MUSIC_KEY, 1);
-            MusicSave();
+            // if (PlayerPrefs.HasKey(MUSIC_KEY))
+            // {
+            //     MusicSave();
+            //
+            //     return;
+            // }
+            //
+            // PlayerPrefs.SetInt(MUSIC_KEY, 1);
+            // MusicSave();
+            _isMuted = !_isMuted;
+            GameController.Instance.OnMusicChange?.Invoke(_isMuted);
         }
 
         private static void MusicSave()
         {
-            var index = PlayerPrefs.GetInt(MUSIC_KEY);
-            var isMuted = index == 0;
-            //reverse
-            _save.IsMuted = !isMuted;
-            index = _save.IsMuted ? 0 : 1;
-            PlayerPrefs.SetInt(MUSIC_KEY, index);
-
-            Debug.Log(_save.IsMuted);
-            _music.mute = !_save.IsMuted;
-            _sfx.mute = !_save.IsMuted;
-            GameController.Instance.OnMusicChange?.Invoke(!_save.IsMuted);
+            // var index = PlayerPrefs.GetInt(MUSIC_KEY);
+            // var isMuted = index == 0;
+            // //reverse
+            // _save.IsMuted = !isMuted;
+            // index = _save.IsMuted ? 0 : 1;
+            // PlayerPrefs.SetInt(MUSIC_KEY, index);
+            //
+            // Debug.Log(_save.IsMuted);
+            // _music.mute = !_save.IsMuted;
+            // _sfx.mute = !_save.IsMuted;
+            // GameController.Instance.OnMusicChange?.Invoke(!_save.IsMuted);
         }
 
         private static void Load()
         {
-            var index = PlayerPrefs.GetInt(MUSIC_KEY);
-            var isMuted = index == 0;
-            _music.mute = !_save.IsMuted;
-            _sfx.mute = !_save.IsMuted;
+            // var index = PlayerPrefs.GetInt(MUSIC_KEY);
+            // var isMuted = index == 0;
+            // _music.mute = !_save.IsMuted;
+            // _sfx.mute = !_save.IsMuted;
 
-            GameController.Instance.OnMusicChange?.Invoke(!_save.IsMuted);
+            // GameController.Instance.OnMusicChange?.Invoke(!_save.IsMuted);
         }
 
         
