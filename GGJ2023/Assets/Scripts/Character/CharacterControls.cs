@@ -89,9 +89,8 @@ public class CharacterControls : MonoBehaviour
 
             if (isLeftClick)
             {
-                tile.OnClick();
-                //todo : play sfx
                 MusicSettings.PlayOneShot(GameController.Instance.AssetsData.MouseClick[0]);
+                tile.OnClick();
                 if (tile.TileState == TileState.Opened) return;
                 PopUpAnimation(tile.transform);
             }
@@ -100,7 +99,6 @@ public class CharacterControls : MonoBehaviour
                 var hasChild = tile.transform.childCount;
                 if (hasChild >= 1) return;
 
-                MusicSettings.PlayOneShot(GameController.Instance.AssetsData.Dig);
                 SpawnRadar(tile);
             }
 
@@ -115,6 +113,7 @@ public class CharacterControls : MonoBehaviour
 
             return;
         }
+        MusicSettings.PlayOneShot(GameController.Instance.AssetsData.RadarSfx);
 
         var newRadar = Instantiate(_radarPrefab);
         CharacterParams.IncreaseRadarCounter();

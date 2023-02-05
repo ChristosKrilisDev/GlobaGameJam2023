@@ -17,6 +17,7 @@ public class AssetsData : ScriptableObject
     public AudioClip Dig;
     public AudioClip DigRoot;
     public AudioClip RadarSfx;
+    public AudioClip GemSfx;
     public AudioClip[] UiClick;
     public AudioClip Win;
     public AudioClip Defeat;

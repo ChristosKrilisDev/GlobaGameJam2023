@@ -18,14 +18,16 @@ MonoBehaviour:
   BrokenRoot: {fileID: 630926261, guid: d6c2d36cfe4511d4d956ed348c3eebcd, type: 3}
   Root: {fileID: 79137395, guid: d6c2d36cfe4511d4d956ed348c3eebcd, type: 3}
   Gem: {fileID: -572352774, guid: d6753d28ca556d447954bbc3bfb40538, type: 3}
-  ThemeSong: {fileID: 8300000, guid: b774cfee628ba8c4180ba448669a5ee5, type: 3}
+  ThemeSong: {fileID: 8300000, guid: 787da3db8d403a345a0696a03162d1d2, type: 3}
   MouseClick:
-  - {fileID: 8300000, guid: d240eae65f0c34646aa943da2a6f2262, type: 3}
+  - {fileID: 8300000, guid: e3fd24bf5e9d9f44c9f2dea03657f81f, type: 3}
   MouseOver:
   - {fileID: 8300000, guid: e3fd24bf5e9d9f44c9f2dea03657f81f, type: 3}
   Dig: {fileID: 8300000, guid: e3fd24bf5e9d9f44c9f2dea03657f81f, type: 3}
-  DigRoot: {fileID: 0}
-  RadarSfx: {fileID: 0}
-  UiClick: []
+  DigRoot: {fileID: 8300000, guid: d240eae65f0c34646aa943da2a6f2262, type: 3}
+  RadarSfx: {fileID: 8300000, guid: c672bd1e13de0bb42b8f2c3dae535902, type: 3}
+  GemSfx: {fileID: 8300000, guid: 642be5e3b275d83479ca2cc1e9bed011, type: 3}
+  UiClick:
+  - {fileID: 8300000, guid: e3fd24bf5e9d9f44c9f2dea03657f81f, type: 3}
   Win: {fileID: 0}
   Defeat: {fileID: 0}

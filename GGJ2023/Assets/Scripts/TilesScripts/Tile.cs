@@ -1,5 +1,6 @@
 using System;
 using Enums;
+using Settings;
 using UnityEngine;
 
 public class Tile : MonoBehaviour
@@ -82,11 +83,17 @@ public class Tile : MonoBehaviour
         {
             case TileType.Ground:
                 GameController.Instance.GroundTilesLeft--;
+                MusicSettings.PlayOneShotOver(GameController.Instance.AssetsData.Dig);
+
                 break;
             case TileType.Root:
                 GameController.Instance.RootTilesLeft--;
+                MusicSettings.PlayOneShotOver(GameController.Instance.AssetsData.DigRoot);
+
                 break;
             case TileType.Gem:
+                MusicSettings.PlayOneShotOver(GameController.Instance.AssetsData.GemSfx);
+
                 GameController.Instance.GroundTilesLeft--;
                 GameController.Instance.GemTilesLeft--;
                 break;
