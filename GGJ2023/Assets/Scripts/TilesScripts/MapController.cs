@@ -159,11 +159,15 @@ public class MapController : MonoBehaviour
                 Sprite s = GameController.Instance.AssetsData.Gem;
                 tileList[randomIndex].GetComponent<Tile>().SetShowTile = s;
                 tileList[randomIndex].GetComponent<Tile>().TileType = Enums.TileType.Gem;
+
                 tileList.Remove(tileList[randomIndex]);
                 selectedCount++;
+                
                 if (selectedCount >= number) finish = true; 
             }
         }
+
+        GameController.Instance.GemTilesLeft = number;
 
     }
 
