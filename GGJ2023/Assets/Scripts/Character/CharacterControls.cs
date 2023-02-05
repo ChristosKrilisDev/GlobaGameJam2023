@@ -114,6 +114,7 @@ public class CharacterControls : MonoBehaviour
 
         var newRadar = Instantiate(_radarPrefab);
         CharacterParams.IncreaseRadarCounter();
+        GameController.Instance.OnRadarChanged?.Invoke(CharacterParams.CurrentRadarsSpawned);
         var tilesList = GameController.Instance.MapController.ReturnTiles((int)tile.transform.position.x, (int)tile.transform.position.y);
         newRadar.Init(tile.gameObject,tilesList);
         // tile.PlaceObject(newRadar.gameObject);

@@ -29,7 +29,12 @@ public class GameController : MonoBehaviour
     public UnityAction<int> OnLevelChange;
     public UnityAction<int> OnScoreChange;
     public UnityAction<bool> OnMusicChange;
-
+    
+    public UnityAction<int> OnRootChanged;
+    public UnityAction<int> OnGemChanged;
+    public UnityAction<int> OnGroundChanged;
+    public UnityAction<int> OnRadarChanged;
+    
     public static GameController Instance { get; private set; }
     private void Awake()
     {

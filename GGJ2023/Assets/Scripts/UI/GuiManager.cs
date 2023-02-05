@@ -48,6 +48,31 @@ public class GuiManager : MonoBehaviour
 
     }
 
+    private void OnRootChanged(int value)
+    {
+        _rootSlot.ChangeText($"{value}/{GameController.Instance.RootTilesLeft}");
+    }
+    
+    private void OnGemChanged(int value)
+    {
+        _gemSlots.ChangeText($"{value}/{GameController.Instance.GemTilesLeft}");
+
+    }
+    
+    private void OnGroundChanged(int value)
+    {
+        _groundSlots.ChangeText($"{value/GameController.Instance.GroundTilesLeft}");
+
+    }
+    
+    private void OnRadarChanged(int value)
+    {
+        var maxRadars = GameController.Instance.CharacterController.CharacterParams.RadarsSpawnLimit;
+        var currentSpawned = GameController.Instance.CharacterController.CharacterParams.CurrentRadarsSpawned;
+        _radarSlots.ChangeText($"{currentSpawned}/{maxRadars}");
+
+    }
+
     private void OnMusicChange(bool isMuted)
     {
         _musicButton.image.sprite = isMuted? _musicOff : _musicOn;
@@ -59,6 +84,11 @@ public class GuiManager : MonoBehaviour
         GameController.Instance.OnScoreChange += OnScoreChange;
         GameController.Instance.OnMusicChange += OnMusicChange;
         
+        GameController.Instance.OnRootChanged += OnRootChanged;
+        GameController.Instance.OnGemChanged += OnGemChanged;
+        GameController.Instance.OnGroundChanged += OnGroundChanged;
+        GameController.Instance.OnRadarChanged += OnRadarChanged;
+        
         _musicButton.onClick.AddListener(MusicSettings.OnMusicChange);
     }
 
@@ -68,16 +98,21 @@ public class GuiManager : MonoBehaviour
         GameController.Instance.OnScoreChange -= OnScoreChange;
         GameController.Instance.OnMusicChange -= OnMusicChange;
         
+        GameController.Instance.OnRootChanged -= OnRootChanged;
+        GameController.Instance.OnGemChanged -= OnGemChanged;
+        GameController.Instance.OnGroundChanged -= OnGroundChanged;
+        GameController.Instance.OnRadarChanged -= OnRadarChanged;
+        
         _musicButton.onClick.RemoveListener(MusicSettings.OnMusicChange);
 
     }
 
     public void UpdateSlots()
     {
-        _rootSlot.ChangeText($"{GameController.Instance.RootTilesLeft}/0");
-        _gemSlots.ChangeText($"{GameController.Instance.GemTilesLeft}/0");
-        _groundSlots.ChangeText($"{GameController.Instance.GroundTilesLeft}/0");
-        _radarSlots.ChangeText($"{GameController.Instance.CharacterController.CharacterParams.RadarsSpawnLimit}/{GameController.Instance.CharacterController.CharacterParams.CurrentRadarsSpawned}");
+        _rootSlot.ChangeText($"0/{GameController.Instance.RootTilesLeft}");
+        _gemSlots.ChangeText($"0/{GameController.Instance.GemTilesLeft}");
+        _groundSlots.ChangeText($"0/{GameController.Instance.GroundTilesLeft}");
+        _radarSlots.ChangeText($"{GameController.Instance.CharacterController.CharacterParams.CurrentRadarsSpawned}/{GameController.Instance.CharacterController.CharacterParams.RadarsSpawnLimit}");
     }
 
 #region Animations
