@@ -76,6 +76,11 @@ public class ScreenLoader : MonoBehaviour
         canvasGroup.DOFade(1f, 2.5f).SetEase(Ease.InQuad).OnComplete(() =>
         {
             SceneManager.LoadScene(index);
+
+            if (GameController.Instance != null)
+            {
+                GameController.Instance.gameState = GameState.Normal;
+            }
         });
         
     }

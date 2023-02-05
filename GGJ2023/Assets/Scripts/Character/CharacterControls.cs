@@ -77,31 +77,29 @@ public class CharacterControls : MonoBehaviour
 
     private void RayCastDetection(bool isLeftClick)
     {
-        if (GameController.Instance.gameState != GameState.Transition)
+        if (GameController.Instance.gameState == GameState.Transition) return;
+        
+        var hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+
+        if (hit == null || hit.collider == null) return;
+
+        var tile = hit.collider.GetComponent<Tile>();
+
+        if (tile == null) return;
+
+        if (isLeftClick)
         {
-            var hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+            MusicSettings.PlayOneShot(GameController.Instance.AssetsData.MouseClick[0]);
+            tile.OnClick();
+            if (tile.TileState == TileState.Opened) return;
+            PopUpAnimation(tile.transform);
+        }
+        else
+        {
+            var hasChild = tile.transform.childCount;
+            if (hasChild >= 1) return;
 
-            if (hit == null || hit.collider == null) return;
-
-            var tile = hit.collider.GetComponent<Tile>();
-
-            if (tile == null) return;
-
-            if (isLeftClick)
-            {
-                MusicSettings.PlayOneShot(GameController.Instance.AssetsData.MouseClick[0]);
-                tile.OnClick();
-                if (tile.TileState == TileState.Opened) return;
-                PopUpAnimation(tile.transform);
-            }
-            else
-            {
-                var hasChild = tile.transform.childCount;
-                if (hasChild >= 1) return;
-
-                SpawnRadar(tile);
-            }
-
+            SpawnRadar(tile);
         }
     }
 

@@ -96,8 +96,6 @@ public class GameController : MonoBehaviour
         }
 
         GuiController.UpdateSlots();
-
-        gameState = GameState.Normal;
     }
 }
 
