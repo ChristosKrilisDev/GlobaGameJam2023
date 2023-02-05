@@ -76,7 +76,7 @@ public class Tile : MonoBehaviour
 
         //todo : check tile type
         ChangeState(TileState.Opened);
-
+        IncreaseCounters();
         // if tile is ground type
         if(TileType == TileType.Ground || TileType == TileType.Gem)
         {
@@ -90,8 +90,26 @@ public class Tile : MonoBehaviour
 
         // if tile is root type
         //GameController.Instance.rootTilesLeft--;
+    }
 
+    private void IncreaseCounters()
+    {
+        switch (TileType)
+        {
 
+            // case TileType.Ground:
+            //     GameController.Instance.GroundTilesLeft--;
+            //     GameController.Instance.OnGemChanged(GameController.Instance.GroundTilesLeft);
+            //     break;
+            // case TileType.Root:
+            //     GameController.Instance.RootTilesLeft--;
+            //     GameController.Instance.OnGemChanged(GameController.Instance.RootTilesLeft);
+            //     break;
+            // case TileType.Gem:
+            //     GameController.Instance.GemTilesLeft--;
+            //     GameController.Instance.OnGemChanged(GameController.Instance.GemTilesLeft);
+            //     break;
+        }
     }
 
     public void PlaceObject(GameObject obj)

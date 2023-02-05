@@ -50,27 +50,22 @@ public class GuiManager : MonoBehaviour
 
     private void OnRootChanged(int value)
     {
-        _rootSlot.ChangeText($"{value}/{GameController.Instance.RootTilesLeft}");
+        _rootSlot.ChangeText($"{value}");
     }
     
     private void OnGemChanged(int value)
     {
-        _gemSlots.ChangeText($"{value}/{GameController.Instance.GemTilesLeft}");
-
+        _gemSlots.ChangeText($"{value}");
     }
     
     private void OnGroundChanged(int value)
     {
-        _groundSlots.ChangeText($"{value/GameController.Instance.GroundTilesLeft}");
-
+        _groundSlots.ChangeText($"{value}");
     }
     
     private void OnRadarChanged(int value)
     {
-        var maxRadars = GameController.Instance.CharacterController.CharacterParams.RadarsSpawnLimit;
-        var currentSpawned = GameController.Instance.CharacterController.CharacterParams.CurrentRadarsSpawned;
-        _radarSlots.ChangeText($"{currentSpawned}/{maxRadars}");
-
+        _radarSlots.ChangeText($"{value}");
     }
 
     private void OnMusicChange(bool isMuted)
