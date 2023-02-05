@@ -55,7 +55,7 @@ public class MapController : MonoBehaviour
             {
                 try
                 {
-                    Destroy(tiles[i, j]);
+                    Destroy(tiles[i, j].gameObject);
                 }
                 catch
                 {
