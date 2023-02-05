@@ -2,9 +2,8 @@
 {
     public enum TileType
     {
-        None = 0,
-        Ground = 1,
-        Root = 2,
-        Gem = 3
+        Ground = 0,
+        Root = 1,
+        Gem = 2
     }
 }

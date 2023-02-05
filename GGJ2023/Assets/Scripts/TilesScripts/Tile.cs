@@ -6,7 +6,7 @@ public class Tile : MonoBehaviour
 {
 
     public TileState TileState = TileState.Hidden;
-    public TileType TileType = TileType.None;
+    public TileType TileType = TileType.Ground;
 
     //todo : move them to a asset collection script
     [SerializeField] private Sprite _setShowTile;
@@ -44,6 +44,12 @@ public class Tile : MonoBehaviour
         else Show();
     }
 
+    public void ChangeStateToShow(TileState newState)
+    {
+        TileState = newState;
+        _mSprite.sprite = _setShowTile;
+    }
+
     private void Show()
     {
         if (TileType == TileType.Root && TileState == TileState.Opened)
@@ -72,12 +78,15 @@ public class Tile : MonoBehaviour
         ChangeState(TileState.Opened);
 
         // if tile is ground type
-        GameController.Instance.GroundTilesLeft--;
-        if(GameController.Instance.GroundTilesLeft <= 1)
+        if(TileType == TileType.Ground || TileType == TileType.Gem)
         {
-            GameController.Instance.GoToNextLevel();
+            GameController.Instance.GroundTilesLeft--;
+            if (GameController.Instance.GroundTilesLeft <= 0)
+            {
+                GameController.Instance.MapController.ShowAllTiles();
+            }
+            //Debug.Log(GameController.Instance.GroundTilesLeft);
         }
-
 
         // if tile is root type
         //GameController.Instance.rootTilesLeft--;

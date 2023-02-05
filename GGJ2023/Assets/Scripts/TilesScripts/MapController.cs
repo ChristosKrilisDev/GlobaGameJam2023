@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using Enums;
 using UnityEngine;
-using DG.Tweening;
 
 public class MapController : MonoBehaviour
 {
@@ -21,7 +21,6 @@ public class MapController : MonoBehaviour
         int x = 0;
         int y = 0;
         int tilesOfLevel = (GameController.Instance.Level * 2 + 1);
-        GameController.Instance.GroundTilesLeft = tilesOfLevel * tilesOfLevel;
         tiles = new Tile[tilesOfLevel, tilesOfLevel];
         x = 0;
         y = 0;
@@ -39,6 +38,52 @@ public class MapController : MonoBehaviour
         SetMiddleTile();
         DistributeGems(Random.Range(1, 1 + GameController.Instance.Level));
         Distribute(0.3f);
+        GameController.Instance.GroundTilesLeft = ((tilesOfLevel * tilesOfLevel)  - 1) - GameController.Instance.RootTilesLeft;
+        Debug.Log(GameController.Instance.GroundTilesLeft);
+    }
+
+    public void ShowAllTiles()
+    {
+
+        GameObject obj = null;
+
+        Vector3 startPos = new Vector3(0, 0, 0);
+        Vector3 endPos = new Vector3(0, 0, 0);
+        float timePassed = 0.0f, duration = 3.0f;
+        bool iconsChanged = false;
+        List<Tile> rootTilesLeft = new List<Tile>();
+
+        Tweener tweener = DOTween.To(() => startPos, x => startPos = x, endPos, duration)
+            .OnStart(() =>
+            {
+                foreach (Tile tile in tiles)
+                {
+                    if (tile.TileState == TileState.Hidden && tile.TileType == TileType.Root)
+                    {
+                        rootTilesLeft.Add(tile);
+                    }
+                }
+            })
+            .OnUpdate(() =>
+            {
+                if ((!iconsChanged) && (timePassed > (duration / 2.0f)))
+                {
+                    foreach (Tile tile in rootTilesLeft)
+                    {
+                        tile.ChangeStateToShow(TileState.Opened);
+                    }
+                    iconsChanged = true;
+                }
+                foreach (Tile tile in rootTilesLeft)
+                {
+                    tile.transform.Rotate(0.0f, ((180.0f) / duration) * Time.deltaTime, 0.0f);
+                }
+                timePassed += Time.deltaTime;
+            })
+            .OnComplete(() =>
+            {
+                GameController.Instance.GoToNextLevel();
+            });
     }
 
     public void SetMiddleTile()
@@ -142,7 +187,7 @@ public class MapController : MonoBehaviour
             tileList.Add(tile.gameObject);
         }
 
-        int distributionNumber = (int)(perc * tileList.Count);
+        GameController.Instance.RootTilesLeft = (int)(perc * tileList.Count);
         
         while (!finish)
         {
@@ -150,10 +195,11 @@ public class MapController : MonoBehaviour
             Sprite s = GameController.Instance.AssetsData.Root;
             tileList[randomIndex].GetComponent<Tile>().SetShowTile = s;
             tileList[randomIndex].GetComponent<Tile>().TileType = Enums.TileType.Root;
+            //Debug.Log("X = " + tileList[randomIndex].transform.position.x + " Y = " + tileList[randomIndex].transform.position.y);
             tileList.Remove(tileList[randomIndex]);
             selectedCount++;
 
-            if (selectedCount >= distributionNumber) finish = true;
+            if (selectedCount >= GameController.Instance.RootTilesLeft) finish = true;
         }
     }
 }
