@@ -53,7 +53,7 @@ public class GameController : MonoBehaviour
         CharacterController = FindObjectOfType<CharacterControls>(true);
         MapController = GetComponentInChildren<MapController>();
         MusicSettings.Init(Save, _music, _sfx);
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
 
     void Start()

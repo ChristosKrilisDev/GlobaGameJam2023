@@ -1,5 +1,6 @@
 using System;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -7,12 +8,47 @@ using UnityEngine.SceneManagement;
 public class ScreenLoader : MonoBehaviour
 {
     [SerializeField]private CanvasGroup canvasGroup;
+    [SerializeField]private TMP_Text gameDescription;
 
     
     
     private void Awake()
     {
-        FadeOut();
+        Debug.Log("TOM 1");
+        if (SceneManager.GetActiveScene().name.Equals("MainScene"))
+        {
+            Vector3 startPos = new Vector3(0, 0, 0);
+            Vector3 endPos = new Vector3(0, 0, 0);
+            float timePassed = 0.0f, duration = 10.0f;
+            bool hideText = false;
+
+            Tweener tweener = DOTween.To(() => startPos, x => startPos = x, endPos, duration)
+                .OnStart(() =>
+                {
+                    canvasGroup.alpha = 1;
+                    gameDescription.gameObject.SetActive(true);
+                })
+                .OnUpdate(() =>
+                {
+                    if (!hideText && timePassed > 8.0f)
+                    {
+                        gameDescription.gameObject.SetActive(false);
+                        hideText = true;
+                    }
+
+                    timePassed += Time.deltaTime;
+                })
+                .OnComplete(() =>
+                {
+                    Debug.Log("TOM 2");
+                    FadeOut();
+                });
+        }
+        else
+        {
+            Debug.Log("TOM 3");
+            FadeOut();
+        }
     }
 
     private void FadeIn(Action action)
