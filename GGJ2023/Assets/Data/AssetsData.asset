@@ -17,8 +17,9 @@ MonoBehaviour:
   ThemeSong: {fileID: 8300000, guid: b774cfee628ba8c4180ba448669a5ee5, type: 3}
   MouseClick:
   - {fileID: 8300000, guid: d240eae65f0c34646aa943da2a6f2262, type: 3}
-  MouseOver: []
-  Dig: {fileID: 0}
+  MouseOver:
+  - {fileID: 8300000, guid: e3fd24bf5e9d9f44c9f2dea03657f81f, type: 3}
+  Dig: {fileID: 8300000, guid: e3fd24bf5e9d9f44c9f2dea03657f81f, type: 3}
   DigRoot: {fileID: 0}
   RadarSfx: {fileID: 0}
   UiClick: []
