@@ -892,9 +892,9 @@ TextureImporter:
       name: FloorTiles_34
       rect:
         serializedVersion: 2
-        x: 160
+        x: 161
         y: 256
-        width: 32
+        width: 31
         height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
