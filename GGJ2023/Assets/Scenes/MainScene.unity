@@ -254,6 +254,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: GUI
       objectReference: {fileID: 0}
+    - target: {fileID: 2420055511438924554, guid: fa3d34355a653704f917cbfa176e3ab9, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2420055511438924554, guid: fa3d34355a653704f917cbfa176e3ab9, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 2420055511438924554, guid: fa3d34355a653704f917cbfa176e3ab9, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
     - target: {fileID: 2420055511438924556, guid: fa3d34355a653704f917cbfa176e3ab9, type: 3}
       propertyPath: m_Pivot.x
       value: 0
