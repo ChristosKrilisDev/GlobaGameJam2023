@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57c0bdc802114d3aaf3c53396cee098e, type: 3}
   m_Name: AssetsData
   m_EditorClassIdentifier: 
-  ShowTile: {fileID: 0}
-  HideTile: {fileID: 0}
+  ShowTile: {fileID: 415774232, guid: d6753d28ca556d447954bbc3bfb40538, type: 3}
+  HideTile: {fileID: -887179507, guid: b5ebe238cf42faa489da568b1e259baf, type: 3}
+  MiddleTile: {fileID: -996976715, guid: d6753d28ca556d447954bbc3bfb40538, type: 3}
+  BrokenRoot: {fileID: 630926261, guid: d6c2d36cfe4511d4d956ed348c3eebcd, type: 3}
+  Root: {fileID: 79137395, guid: d6c2d36cfe4511d4d956ed348c3eebcd, type: 3}
   ThemeSong: {fileID: 8300000, guid: b774cfee628ba8c4180ba448669a5ee5, type: 3}
   MouseClick:
   - {fileID: 8300000, guid: d240eae65f0c34646aa943da2a6f2262, type: 3}

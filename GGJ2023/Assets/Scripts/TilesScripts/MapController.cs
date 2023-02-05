@@ -1,25 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
+using Enums;
 using UnityEngine;
 
 public class MapController : MonoBehaviour
 {
 
     [SerializeField]
-    private GameObject tilePrefab;
+    private Tile tilePrefab;
 
     [HideInInspector]
-    private GameObject[,] tiles;
+    private Tile[,] tiles;
 
     public Sprite rootDefault;
-
+    
     public void CreateMap()
     {
         int x = 0;
         int y = 0;
         int tilesOfLevel = (GameController.Instance.Level * 2 + 1);
         GameController.Instance.GroundTilesLeft = tilesOfLevel * tilesOfLevel;
-        tiles = new GameObject[tilesOfLevel, tilesOfLevel];
+        tiles = new Tile[tilesOfLevel, tilesOfLevel];
         x = 0;
         y = 0;
 
@@ -27,13 +28,23 @@ public class MapController : MonoBehaviour
         {
             for (x = 0; x < tilesOfLevel; x++)
             {
-                GameObject tile = Instantiate(tilePrefab);
+                var tile = Instantiate(tilePrefab);
                 tile.transform.position = new Vector2(x, y);
                 tiles[x, y] = tile;
             }
         }
-
+        SetMiddleTile();
         Distribute(0.3f);
+    }
+
+    public void SetMiddleTile()
+    {
+        var tile = tiles[GameController.Instance.Level, GameController.Instance.Level].GetComponent<Tile>();
+
+        tile.GetComponent<BoxCollider2D>().enabled = false;
+        tile.SetShowTile = GameController.Instance.AssetsData.MiddleTile;
+        tile.ForceChangeTile(GameController.Instance.AssetsData.MiddleTile);
+        tile.TileState = TileState.Opened;
     }
 
     public void CleanMap()
@@ -69,7 +80,7 @@ public class MapController : MonoBehaviour
 
                 if((Mathf.Abs((x - i)) <= 1) && (Mathf.Abs((y - j)) <= 1))
                 {
-                    nearTiles.Add(tiles[x, y]);
+                    nearTiles.Add(tiles[x, y].gameObject);
                 }
             }
         }
@@ -79,20 +90,18 @@ public class MapController : MonoBehaviour
 
     public void Distribute(float perc)
     {
-        
         bool finish = false;
         int selectedCount = 0;
 
         List<GameObject> tileList = new List<GameObject>();
-        foreach (GameObject tile in tiles)
+        foreach (Tile tile in tiles)
         {
             if ((tile.transform.position.x == GameController.Instance.Level))
             {
                 if ((tile.transform.position.y == GameController.Instance.Level)) continue;
             }
 
-            tileList.Add(tile);
-
+            tileList.Add(tile.gameObject);
         }
 
         int distributionNumber = (int)(perc * tileList.Count);
@@ -108,6 +117,5 @@ public class MapController : MonoBehaviour
 
             if (selectedCount >= distributionNumber) finish = true;
         }
-
     }
 }

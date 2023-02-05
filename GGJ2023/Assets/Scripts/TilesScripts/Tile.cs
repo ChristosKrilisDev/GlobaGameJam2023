@@ -28,15 +28,13 @@ public class Tile : MonoBehaviour
     {
         _mSprite = GetComponent<SpriteRenderer>();
     }
-    private void Start()
-    {
-        Init();
-    }
-    private void Init()
+
+    
+    public void Init()
     {
         ChangeState(TileState.Hidden);
     }
-    
+
 
     private void ChangeState(TileState newState)
     {
@@ -90,5 +88,10 @@ public class Tile : MonoBehaviour
     public void PlaceObject(GameObject obj)
     {
         obj.transform.localPosition = transform.localPosition;
+    }
+
+    public void ForceChangeTile(Sprite sprite)
+    {
+        _mSprite.sprite = sprite;
     }
 }
