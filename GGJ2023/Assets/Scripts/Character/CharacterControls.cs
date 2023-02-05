@@ -99,6 +99,7 @@ public class CharacterControls : MonoBehaviour
         }
         else
         {
+            MusicSettings.PlayOneShot(GameController.Instance.AssetsData.Dig);
             //todo : play sfx
             SpawnRadar(tile);
         }
