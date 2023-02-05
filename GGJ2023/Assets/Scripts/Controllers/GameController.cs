@@ -49,12 +49,19 @@ public class GameController : MonoBehaviour
 
     public void GoToNextLevel()
     {
-        if (Level > 0) MapController.CleanMap();
-        Level++;
-        OnLevelChange?.Invoke(Level);
-        _cameraController.MoveCamera();
-        StartCoroutine(_cameraController.ChangeCameraSize());
-        MapController.CreateMap();
+        if (Level >= 4)
+        {
+            GameObject.Find("ScreenLoader").GetComponent<ScreenLoader>().LoadScene(0);
+        }
+        else
+        {
+            if (Level > 0) MapController.CleanMap();
+            Level++;
+            OnLevelChange?.Invoke(Level);
+            _cameraController.MoveCamera();
+            StartCoroutine(_cameraController.ChangeCameraSize());
+            MapController.CreateMap();
+        }
     }
 
 }
