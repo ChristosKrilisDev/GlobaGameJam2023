@@ -33,6 +33,7 @@ public class MapController : MonoBehaviour
                 var tile = Instantiate(tilePrefab);
                 tile.transform.position = new Vector2(x, y);
                 tiles[x, y] = tile;
+                tile.Init();
             }
         }
         SetMiddleTile();
@@ -58,7 +59,7 @@ public class MapController : MonoBehaviour
             {
                 try
                 {
-                    Destroy(tiles[i, j]);
+                    Destroy(tiles[i, j].gameObject);
                 }
                 catch
                 {
