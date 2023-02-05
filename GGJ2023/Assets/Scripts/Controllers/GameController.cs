@@ -1,4 +1,5 @@
 using Data;
+using Enums;
 using Settings;
 using UnityEngine;
 using UnityEngine.Events;
@@ -8,6 +9,9 @@ public class GameController : MonoBehaviour
 
     [HideInInspector]
     public int GroundTilesLeft, RootTilesLeft, GemTilesLeft, Level = 0;
+
+    [HideInInspector]
+    public GameState gameState = GameState.Normal;
 
     public MapController MapController { get; private set; }
 
@@ -57,6 +61,24 @@ public class GameController : MonoBehaviour
         GoToNextLevel();
     }
 
+    public void IncreaseCounters(TileType tileType)
+    {
+        switch (tileType)
+        {
+            case TileType.Ground:
+                OnGroundChanged?.Invoke(GroundTilesLeft);
+                break;
+            case TileType.Root:
+                OnRootChanged?.Invoke(RootTilesLeft);
+                break;
+            case TileType.Gem:
+                OnGroundChanged?.Invoke(GroundTilesLeft);
+                OnGemChanged?.Invoke(GemTilesLeft);
+                break;
+        }
+    }
+
+
     public void GoToNextLevel()
     {
         if (Level >= 4)
@@ -74,6 +96,13 @@ public class GameController : MonoBehaviour
         }
 
         GuiController.UpdateSlots();
-    }
 
+        gameState = GameState.Normal;
+    }
+}
+
+public enum GameState
+{
+    Normal,
+    Transition
 }
