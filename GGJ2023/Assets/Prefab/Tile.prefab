@@ -102,7 +102,7 @@ MonoBehaviour:
   TileType: 0
   _setShowTile: {fileID: 415774232, guid: d6753d28ca556d447954bbc3bfb40538, type: 3}
   _setHideTile: {fileID: -887179507, guid: b5ebe238cf42faa489da568b1e259baf, type: 3}
-  _brokenTile: {fileID: 509409007, guid: d6c2d36cfe4511d4d956ed348c3eebcd, type: 3}
+  _brokenTile: {fileID: 630926261, guid: d6c2d36cfe4511d4d956ed348c3eebcd, type: 3}
   _brokenColor: {r: 1, g: 0.7971698, b: 0.7971698, a: 1}
 --- !u!61 &4029341274772710082
 BoxCollider2D:
