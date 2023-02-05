@@ -1201,6 +1201,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4992970652052769834, guid: 7387599bc2f82cb468894058624b4cae, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b6adf1cf14f6d464194562461987edf1, type: 3}
     - target: {fileID: 6664868322683835705, guid: 7387599bc2f82cb468894058624b4cae, type: 3}
       propertyPath: m_Name
       value: GroundSlot
