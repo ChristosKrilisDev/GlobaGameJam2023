@@ -10,7 +10,7 @@ public class GameController : MonoBehaviour
     [HideInInspector]
     public int GroundTilesLeft, RootTilesLeft, GemTilesLeft, Level = 0;
 
-    [HideInInspector]
+    // [HideInInspector]
     public GameState gameState = GameState.Normal;
 
     public MapController MapController { get; private set; }
@@ -55,12 +55,7 @@ public class GameController : MonoBehaviour
         MusicSettings.Init(Save, _music, _sfx);
         //DontDestroyOnLoad(gameObject);
     }
-
-    void Start()
-    {
-        GoToNextLevel();
-    }
-
+    
     public void IncreaseCounters(TileType tileType)
     {
         switch (tileType)
@@ -93,9 +88,11 @@ public class GameController : MonoBehaviour
             _cameraController.MoveCamera();
             StartCoroutine(_cameraController.ChangeCameraSize());
             MapController.CreateMap();
+            gameState = GameState.Normal;
         }
 
         GuiController.UpdateSlots();
+        
     }
 }
 

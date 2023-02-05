@@ -88,7 +88,7 @@ public class Tile : MonoBehaviour
                 break;
             case TileType.Root:
                 GameController.Instance.RootTilesLeft--;
-                GameController.Instance.ScoreManager.DecreaseScoreValue(-5);
+                GameController.Instance.ScoreManager.DecreaseScoreValue(5);
                 MusicSettings.PlayOneShotOver(GameController.Instance.AssetsData.DigRoot);
 
                 break;

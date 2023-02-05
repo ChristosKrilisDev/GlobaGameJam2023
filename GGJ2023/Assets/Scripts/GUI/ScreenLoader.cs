@@ -15,13 +15,20 @@ public class ScreenLoader : MonoBehaviour
     private void Awake()
     {
         Debug.Log("TOM 1");
+        
+        
         if (SceneManager.GetActiveScene().name.Equals("MainScene"))
         {
             Vector3 startPos = new Vector3(0, 0, 0);
             Vector3 endPos = new Vector3(0, 0, 0);
             float timePassed = 0.0f, duration = 10.0f;
             bool hideText = false;
-
+            
+            if (GameController.Instance != null)
+            {
+                GameController.Instance.gameState = GameState.Transition;
+            } 
+            
             Tweener tweener = DOTween.To(() => startPos, x => startPos = x, endPos, duration)
                 .OnStart(() =>
                 {
@@ -64,6 +71,12 @@ public class ScreenLoader : MonoBehaviour
         canvasGroup.DOFade(0f, 5f).SetEase(Ease.OutQuad).OnComplete(() =>
         {
             canvasGroup.gameObject.SetActive(false);
+            if (GameController.Instance != null)
+            {
+                GameController.Instance.gameState = GameState.Normal;
+                GameController.Instance.GoToNextLevel();
+            }
+            
         });
     }
 
@@ -73,13 +86,14 @@ public class ScreenLoader : MonoBehaviour
         canvasGroup.gameObject.SetActive(true);
         
         canvasGroup.DOKill();
-        canvasGroup.DOFade(1f, 2.5f).SetEase(Ease.InQuad).OnComplete(() =>
+        canvasGroup.DOFade(1f, 2f).SetEase(Ease.OutQuad).OnComplete(() =>
         {
             SceneManager.LoadScene(index);
 
             if (GameController.Instance != null)
             {
                 GameController.Instance.gameState = GameState.Normal;
+                GameController.Instance.GoToNextLevel();
             }
         });
         
