@@ -6,27 +6,23 @@ using UnityEngine;
 
 public class CharacterControls : MonoBehaviour
 {
-    [SerializeField] private CharacterParams _characterParams;
+     public CharacterParams CharacterParams;
     [SerializeField] private Radar _radarPrefab;
     [SerializeField] private ScoreManager _scoreManager;
     [SerializeField] private GuiManager _guiManager; //remove from here
 
     private GameObject _focusedGameObject = null;
-
-    private void Awake()
-    {
-
-    }
+    
     
     private void Start()
     {
-        _characterParams.Reset();
+        CharacterParams.Reset();
         Init();
     }
 
     private void Init()
     {
-        _scoreManager = new ScoreManager(_characterParams.RadarsSpawnLimit);
+        _scoreManager = new ScoreManager(CharacterParams.RadarsSpawnLimit);
         GameController.Instance.ScoreManager = _scoreManager;
         _focusedGameObject = null;
     }
@@ -109,7 +105,7 @@ public class CharacterControls : MonoBehaviour
 
     private void SpawnRadar(Tile tile)
     {
-        if (!_characterParams.CanSpawnRadar())
+        if (!CharacterParams.CanSpawnRadar())
         {
             Debug.Log("No more radars available");
 
@@ -117,12 +113,17 @@ public class CharacterControls : MonoBehaviour
         }
 
         var newRadar = Instantiate(_radarPrefab);
-        _characterParams.IncreaseRadarCounter();
+        CharacterParams.IncreaseRadarCounter();
         var tilesList = GameController.Instance.MapController.ReturnTiles((int)tile.transform.position.x, (int)tile.transform.position.y);
         newRadar.Init(tile.gameObject,tilesList);
         // tile.PlaceObject(newRadar.gameObject);
     }
 
+    public int GetUsedRadarsCount()
+    {
+        return CharacterParams.CurrentRadarsSpawned;
+    }
+    
 #region Animations
 
     private void PopUpAnimation(Transform objTrasform)

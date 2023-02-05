@@ -4,26 +4,26 @@
 public class CharacterParams : ScriptableObject
 {
     public int RadarsSpawnLimit;
-    private int _currentRadarsSpawned;
+    public int CurrentRadarsSpawned;
 
     public bool CanSpawnRadar()
     {
-        return _currentRadarsSpawned < RadarsSpawnLimit;
+        return CurrentRadarsSpawned < RadarsSpawnLimit;
     }
 
     public void IncreaseRadarCounter()
     {
-        _currentRadarsSpawned++;
+        CurrentRadarsSpawned++;
     }
 
     public void RemoveRadar()
     {
-        _currentRadarsSpawned--;
+        CurrentRadarsSpawned--;
     }
     
     public void Reset()
     {
-        _currentRadarsSpawned = 0;
+        CurrentRadarsSpawned = 0;
     }
     
 

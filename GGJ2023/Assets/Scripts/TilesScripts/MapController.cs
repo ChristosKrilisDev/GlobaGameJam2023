@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using Enums;
@@ -12,9 +11,6 @@ public class MapController : MonoBehaviour
 
     [HideInInspector]
     private Tile[,] tiles;
-
-    public Sprite rootDefault;
-    public Sprite gemDefault;
 
     public void CreateMap()
     {

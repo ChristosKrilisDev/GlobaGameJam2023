@@ -7,24 +7,28 @@ public class GameController : MonoBehaviour
 {
 
     [HideInInspector]
-    public int GroundTilesLeft, RootTilesLeft, Level = 0;
+    public int GroundTilesLeft, RootTilesLeft, GemTilesLeft, Level = 0;
 
     public MapController MapController { get; private set; }
 
     public GuiManager GuiController { get; set; }
     public ScoreManager ScoreManager { get; set; }
     [SerializeField] private CameraController _cameraController;
-
-    public UnityAction<int> OnLevelChange;
-    public UnityAction<int> OnScoreChange;
-    public UnityAction<bool> OnMusicChange;
-
+    
     [Space,Header("DATA")]
     public Save Save;
     public AssetsData AssetsData;
     [Space,Header("MUSIC")]
     [SerializeField] private AudioSource _music;
     [SerializeField] private AudioSource _sfx;
+
+
+    [HideInInspector]
+    public CharacterControls CharacterController;
+    
+    public UnityAction<int> OnLevelChange;
+    public UnityAction<int> OnScoreChange;
+    public UnityAction<bool> OnMusicChange;
 
     public static GameController Instance { get; private set; }
     private void Awake()
@@ -37,6 +41,7 @@ public class GameController : MonoBehaviour
         }
 
         Instance = this;
+        CharacterController = FindObjectOfType<CharacterControls>(true);
         MapController = GetComponentInChildren<MapController>();
         MusicSettings.Init(Save, _music, _sfx);
         DontDestroyOnLoad(gameObject);
@@ -62,6 +67,8 @@ public class GameController : MonoBehaviour
             StartCoroutine(_cameraController.ChangeCameraSize());
             MapController.CreateMap();
         }
+
+        GuiController.UpdateSlots();
     }
 
 }

@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using GUI;
 using Settings;
 using TMPro;
 using UnityEngine;
@@ -14,10 +15,13 @@ public class GuiManager : MonoBehaviour
     [SerializeField] private Button _musicButton;
     [SerializeField] private Sprite _musicOn;
     [SerializeField] private Sprite _musicOff;
+
+    [SerializeField] private StatSlotGui _rootSlot, _gemSlots, _groundSlots, _radarSlots;
     
 
     private void OnEnable()
     {
+        GameController.Instance.GuiController = this;
         Init();
     }
 
@@ -68,6 +72,13 @@ public class GuiManager : MonoBehaviour
 
     }
 
+    public void UpdateSlots()
+    {
+        _rootSlot.ChangeText($"{GameController.Instance.RootTilesLeft}/0");
+        _gemSlots.ChangeText($"{GameController.Instance.GemTilesLeft}/0");
+        _groundSlots.ChangeText($"{GameController.Instance.GroundTilesLeft}/0");
+        _radarSlots.ChangeText($"{GameController.Instance.CharacterController.CharacterParams.RadarsSpawnLimit}/{GameController.Instance.CharacterController.CharacterParams.CurrentRadarsSpawned}");
+    }
 
 #region Animations
 
