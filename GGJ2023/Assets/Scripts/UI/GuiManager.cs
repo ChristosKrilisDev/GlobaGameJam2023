@@ -104,9 +104,9 @@ public class GuiManager : MonoBehaviour
 
     public void UpdateSlots()
     {
-        _rootSlot.ChangeText($"0/{GameController.Instance.RootTilesLeft}");
-        _gemSlots.ChangeText($"0/{GameController.Instance.GemTilesLeft}");
-        _groundSlots.ChangeText($"0/{GameController.Instance.GroundTilesLeft}");
+        _rootSlot.ChangeText($"{GameController.Instance.RootTilesLeft}");
+        _gemSlots.ChangeText($"{GameController.Instance.GemTilesLeft}");
+        _groundSlots.ChangeText($"{GameController.Instance.GroundTilesLeft}");
         _radarSlots.ChangeText($"{GameController.Instance.CharacterController.CharacterParams.CurrentRadarsSpawned}/{GameController.Instance.CharacterController.CharacterParams.RadarsSpawnLimit}");
     }
 
