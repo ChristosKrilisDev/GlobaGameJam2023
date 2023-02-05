@@ -11,6 +11,8 @@ public class Tile : MonoBehaviour
     //todo : move them to a asset collection script
     [SerializeField] private Sprite _setShowTile;
     [SerializeField] private Sprite _setHideTile;
+    [SerializeField] private Sprite _brokenTile;
+    [SerializeField] private Color _brokenColor;
     public Sprite SetShowTile
     {
         set => _setShowTile = value;
@@ -46,7 +48,16 @@ public class Tile : MonoBehaviour
 
     private void Show()
     {
-        _mSprite.sprite = _setShowTile;
+        if (TileType == TileType.Root && TileState == TileState.Opened)
+        {
+            //hit by player
+            _mSprite.sprite = _brokenTile;
+            _mSprite.color = _brokenColor;
+        }
+        else
+        {
+            _mSprite.sprite = _setShowTile;
+        }
     }
 
     private void Hide()
