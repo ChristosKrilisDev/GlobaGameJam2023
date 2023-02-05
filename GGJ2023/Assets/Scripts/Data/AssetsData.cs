@@ -8,6 +8,7 @@ public class AssetsData : ScriptableObject
     public Sprite MiddleTile;
     public Sprite BrokenRoot;
     public Sprite Root;
+    public Sprite Gem;
 
     [Space, Header("MUSIC")]
     public AudioClip ThemeSong;

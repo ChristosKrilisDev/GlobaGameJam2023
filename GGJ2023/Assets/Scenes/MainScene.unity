@@ -2586,6 +2586,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: GUI
       objectReference: {fileID: 0}
+    - target: {fileID: 2420055511438924554, guid: fa3d34355a653704f917cbfa176e3ab9, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2420055511438924554, guid: fa3d34355a653704f917cbfa176e3ab9, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 2420055511438924554, guid: fa3d34355a653704f917cbfa176e3ab9, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
     - target: {fileID: 2420055511438924556, guid: fa3d34355a653704f917cbfa176e3ab9, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2775,6 +2787,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameController
       objectReference: {fileID: 0}
+    - target: {fileID: 6596397941162402162, guid: 389b789d910ec994db960d58a7c50baf, type: 3}
+      propertyPath: gemDefault
+      value: 
+      objectReference: {fileID: -572352774, guid: d6753d28ca556d447954bbc3bfb40538, type: 3}
+    - target: {fileID: 6596397941162402162, guid: 389b789d910ec994db960d58a7c50baf, type: 3}
+      propertyPath: tilePrefab
+      value: 
+      objectReference: {fileID: 4029341274772710087, guid: fe34bb20ba174774b84b1a282a460145, type: 3}
     - target: {fileID: 6596397941162402162, guid: 389b789d910ec994db960d58a7c50baf, type: 3}
       propertyPath: rootDefault
       value: 

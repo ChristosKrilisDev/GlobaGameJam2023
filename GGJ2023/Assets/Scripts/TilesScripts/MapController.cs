@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Enums;
 using UnityEngine;
+using DG.Tweening;
 
 public class MapController : MonoBehaviour
 {
@@ -13,7 +14,8 @@ public class MapController : MonoBehaviour
     private Tile[,] tiles;
 
     public Sprite rootDefault;
-    
+    public Sprite gemDefault;
+
     public void CreateMap()
     {
         int x = 0;
@@ -34,6 +36,7 @@ public class MapController : MonoBehaviour
             }
         }
         SetMiddleTile();
+        DistributeGems(Random.Range(1, 1 + GameController.Instance.Level));
         Distribute(0.3f);
     }
 
@@ -88,6 +91,40 @@ public class MapController : MonoBehaviour
         return nearTiles;
     }
 
+    public void DistributeGems(int number)
+    {
+
+        bool finish = false;
+        int selectedCount = 0;
+
+        List<GameObject> tileList = new List<GameObject>();
+        foreach (Tile tile in tiles)
+        {
+            if ((tile.transform.position.x == GameController.Instance.Level))
+            {
+                if ((tile.transform.position.y == GameController.Instance.Level)) continue;
+            }
+
+            tileList.Add(tile.gameObject);
+        }
+
+        while (!finish)
+        {
+            int randomIndex = Random.Range(0, tileList.Count);
+            
+            if (tileList[randomIndex].GetComponent<Tile>().TileType == Enums.TileType.Ground) 
+            {
+                Sprite s = GameController.Instance.AssetsData.Gem;
+                tileList[randomIndex].GetComponent<Tile>().SetShowTile = s;
+                tileList[randomIndex].GetComponent<Tile>().TileType = Enums.TileType.Gem;
+                tileList.Remove(tileList[randomIndex]);
+                selectedCount++;
+                if (selectedCount >= number) finish = true; 
+            }
+        }
+
+    }
+
     public void Distribute(float perc)
     {
         bool finish = false;
@@ -109,7 +146,7 @@ public class MapController : MonoBehaviour
         while (!finish)
         {
             int randomIndex = Random.Range(0, tileList.Count);
-            Sprite s = rootDefault;
+            Sprite s = GameController.Instance.AssetsData.Root;
             tileList[randomIndex].GetComponent<Tile>().SetShowTile = s;
             tileList[randomIndex].GetComponent<Tile>().TileType = Enums.TileType.Root;
             tileList.Remove(tileList[randomIndex]);
