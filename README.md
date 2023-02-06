@@ -1,13 +1,8 @@
-# GlobaGameJam2023
+#GlobaGameJam2023 - Royal Gardener
 
 <img width="50%" src="GGJ2023/ReadMe/1.png">
 
-https://christoskrilis.itch.io/royal-gardener
-
-
-<b>Royal Gardener</b>
-<br>
-
+<b></b>
 You are a gardener in charge of renovating the royal gardens. You have to dig the garden WITHOUT destroying the roots. For every root you destroy, the king gets angry and docks X money from your payment. If you destroy many roots, you are fired (and have to restart the game).
 
 You might find valuable minerals while digging. Turn those in to the king for extra money. If you complete the tasks without destroying the plants, you will be promoted to Royal Gardener. You can also use your radar to check if roots are close to your digging tile.
@@ -15,14 +10,14 @@ You might find valuable minerals while digging. Turn those in to the king for ex
 
 
 ------------
-<b>Installation Instractions</b>
+#<b>Installation Instractions</b>
 <br>
 A project created at the Global Game Jam 2023:  <a href = "https://globalgamejam.org/2023/games/royal-gardener-4">Read the instructions and download it here</a>
 <br>
 Itch.io :  <a href = "https://christoskrilis.itch.io/royal-gardener">Read the instructions and download it here</a>
 
 <br>
-<b>How To Play :
+##<b>How To Play :
 ** Left Mouse Click : Dig Action 
 ** Right Mouse Click : Place Radar*</b>
 <br>
@@ -35,7 +30,7 @@ Itch.io :  <a href = "https://christoskrilis.itch.io/royal-gardener">Read the in
 <br>
 
 ------------
-<b>Credits</b>
+#<b>Credits</b>
 
 Royal Gardener Development Team
 
