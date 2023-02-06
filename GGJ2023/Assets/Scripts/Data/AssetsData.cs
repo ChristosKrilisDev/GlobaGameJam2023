@@ -7,6 +7,7 @@ public class AssetsData : ScriptableObject
     public Sprite HideTile;
     public Sprite MiddleTile;
     public Sprite BrokenRoot;
+    public Color BrokenColor;
     public Sprite Root;
     public Sprite Gem;
 

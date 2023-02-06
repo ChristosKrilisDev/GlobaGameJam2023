@@ -1,3 +1,4 @@
+using System;
 using Data;
 using Enums;
 using Settings;
@@ -55,8 +56,22 @@ public class GameController : MonoBehaviour
         MusicSettings.Init(Save, _music, _sfx);
         //DontDestroyOnLoad(gameObject);
     }
-    
-    public void IncreaseCounters(TileType tileType)
+
+    public void Init()
+    {
+        GoToNextLevel();
+        
+        //update ui
+        OnLevelChange?.Invoke(Level);
+        // OnScoreChange?.Invoke(ScoreManager.CurrentScore);
+        // OnMusicChange?.Invoke();
+        OnRootChanged?.Invoke(RootTilesLeft);
+        OnGemChanged?.Invoke(GemTilesLeft);
+        OnGroundChanged?.Invoke(GroundTilesLeft);
+        OnRadarChanged?.Invoke(CharacterController.CharacterParams.RadarsSpawnLimit - CharacterController.CharacterParams.CurrentRadarsSpawned);
+    }
+
+    public void IncreaseTileCounters(TileType tileType)
     {
         switch (tileType)
         {

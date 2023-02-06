@@ -2,91 +2,57 @@ using System;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class ScreenLoader : MonoBehaviour
 {
-    [SerializeField]private CanvasGroup canvasGroup;
-    [SerializeField]private TMP_Text gameDescription;
+    [SerializeField]private CanvasGroup _canvasGroup;
+    [SerializeField]private TMP_Text _gameDescription;
 
-    
-    
     private void Awake()
     {
-        Debug.Log("TOM 1");
-        
-        
-        if (SceneManager.GetActiveScene().name.Equals("MainScene"))
-        {
-            Vector3 startPos = new Vector3(0, 0, 0);
-            Vector3 endPos = new Vector3(0, 0, 0);
-            float timePassed = 0.0f, duration = 10.0f;
-            bool hideText = false;
-            
-            if (GameController.Instance != null)
-            {
-                GameController.Instance.gameState = GameState.Transition;
-            } 
-            
-            Tweener tweener = DOTween.To(() => startPos, x => startPos = x, endPos, duration)
-                .OnStart(() =>
-                {
-                    canvasGroup.alpha = 1;
-                    gameDescription.gameObject.SetActive(true);
-                })
-                .OnUpdate(() =>
-                {
-                    if (!hideText && timePassed > 8.0f)
-                    {
-                        gameDescription.gameObject.SetActive(false);
-                        hideText = true;
-                    }
-
-                    timePassed += Time.deltaTime;
-                })
-                .OnComplete(() =>
-                {
-                    Debug.Log("TOM 2");
-                    FadeOut();
-                });
-        }
-        else
-        {
-            Debug.Log("TOM 3");
-            FadeOut();
-        }
+        FadeOut(_gameDescription);
     }
 
     private void FadeIn(Action action)
     {
-        canvasGroup.DOKill();
-        canvasGroup.DOFade(1f, 5f).SetEase(Ease.InCubic);
+        _canvasGroup.DOKill();
+        _canvasGroup.DOFade(1f, 5f).SetEase(Ease.InCubic);
     }
 
-    private void FadeOut()
+    private void FadeOut(TMP_Text tmpText = null)
     {
-        canvasGroup.alpha = 1;
-        canvasGroup.DOKill();
-        canvasGroup.DOFade(0f, 5f).SetEase(Ease.OutQuad).OnComplete(() =>
+        GameController.Instance.Init();
+
+        if (tmpText != null)
         {
-            canvasGroup.gameObject.SetActive(false);
+            tmpText.gameObject.SetActive(true);
+        }
+        
+        _canvasGroup.alpha = 1;
+        _canvasGroup.DOKill();
+        _canvasGroup.DOFade(0f, 3f).SetEase(Ease.OutQuad).OnComplete(() =>
+        {
+            _canvasGroup.gameObject.SetActive(false);
+            if (tmpText != null)
+            {
+                tmpText.gameObject.SetActive(false);
+            }
             if (GameController.Instance != null)
             {
                 GameController.Instance.gameState = GameState.Normal;
-                GameController.Instance.GoToNextLevel();
             }
             
         });
     }
 
-    public void LoadScene(int index)
+    public void LoadScene(int index )
     {
-        canvasGroup.alpha = 0;
-        canvasGroup.gameObject.SetActive(true);
+        _canvasGroup.alpha = 0;
+        _canvasGroup.gameObject.SetActive(true);
         
-        canvasGroup.DOKill();
-        canvasGroup.DOFade(1f, 2f).SetEase(Ease.OutQuad).OnComplete(() =>
+        _canvasGroup.DOKill();
+        _canvasGroup.DOFade(1f, 2f).SetEase(Ease.OutQuad).OnComplete(() =>
         {
             SceneManager.LoadScene(index);
 
