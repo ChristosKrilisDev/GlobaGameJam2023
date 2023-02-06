@@ -1,4 +1,4 @@
-#GlobaGameJam2023 - Royal Gardener
+# GlobaGameJam2023 - Royal Gardener
 
 <img width="50%" src="GGJ2023/ReadMe/1.png">
 
@@ -17,7 +17,7 @@ A project created at the Global Game Jam 2023:  <a href = "https://globalgamejam
 Itch.io :  <a href = "https://christoskrilis.itch.io/royal-gardener">Read the instructions and download it here</a>
 
 <br>
-##<b>How To Play :
+## <b>How To Play :
 ** Left Mouse Click : Dig Action 
 ** Right Mouse Click : Place Radar*</b>
 <br>
@@ -30,7 +30,7 @@ Itch.io :  <a href = "https://christoskrilis.itch.io/royal-gardener">Read the in
 <br>
 
 ------------
-#<b>Credits</b>
+# <b>Credits</b>
 
 Royal Gardener Development Team
 
