@@ -24,8 +24,8 @@ Itch.io :  <a href = "https://christoskrilis.itch.io/royal-gardener">Read the in
 *Radar warns you when a hidden root is 1 block distance away.
 
 <br>
-<p><img width="50%" src="GGJ2023/ReadMe/2.png"></p>
-<p><img width="50%" src="GGJ2023/ReadMe/3.png"></p>
+<p><img width="40%" src="GGJ2023/ReadMe/2.png"></p>
+<p><img width="40%" src="GGJ2023/ReadMe/3.png"></p>
 
 <br>
 
