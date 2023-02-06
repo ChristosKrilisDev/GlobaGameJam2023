@@ -22,16 +22,20 @@ A project created at the Global Game Jam 2023:  <a href = "https://globalgamejam
 Itch.io :  <a href = "https://christoskrilis.itch.io/royal-gardener">Read the instructions and download it here</a>
 
 <br>
-<b>How To Play : Left Mouse Click to dig Right Mouse Click to place Radar</b>
+<b>How To Play :
+** Left Mouse Click : Dig Action 
+** Right Mouse Click : Place Radar*</b>
+<br>
+*Radar warns you when a hidden root is 1 block distance away.
 
+<br>
 <p><img width="50%" src="GGJ2023/ReadMe/2.png"></p>
 <p><img width="50%" src="GGJ2023/ReadMe/3.png"></p>
 
 <br>
 
 ------------
-Credits
-
+<b>Credits</b>
 
 Royal Gardener Development Team
 
