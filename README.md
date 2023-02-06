@@ -18,8 +18,8 @@ Itch.io :  <a href = "https://christoskrilis.itch.io/royal-gardener">Read the in
 
 <br>
 <b>How To Play :
-** Left Mouse Click : Dig Action 
-** Right Mouse Click : Place Radar*</b>
+<br>* Left Mouse Click : Dig Action 
+<br>** Right Mouse Click : Place Radar*</b>
 <br>
 *Radar warns you when a hidden root is 1 block distance away.
 
