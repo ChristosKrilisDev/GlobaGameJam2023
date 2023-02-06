@@ -48,7 +48,7 @@ Royal Gardener Development Team
 - Christos Krilis <a href = "pegiannos@gmail.com">pegiannos@gmail.com</a>
 
 <b>NARRATIVE DESIGNER</b>: 
--Pavlos Laguretos
+- Pavlos Laguretos  <a href = "odysseastsiridis@gmail.com">odysseastsiridis@gmail.com</a>
 
 
 SPECIAL THANKS : <b>eΝVy Softworks</b>
