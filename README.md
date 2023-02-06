@@ -39,19 +39,23 @@ Royal Gardener Development Team
 - Kostas Tom Papaioannou (<a href = "tom-papaioannou@outlook.com">tom-papaioannou@outlook.com</a>)
 - Peter Johnson (<a href = "pegiannos@gmail.com">pegiannos@gmail.com</a>)
 
+
 <b>TECHNICAL ANIMATION</b>: 
 - Kostas Tom Papaioannou (<a href = "tom-papaioannou@outlook.com">tom-papaioannou@outlook.com</a>)
 - Christos Krilis (<a href = "christos.krilis.dev@gmail.com">christos.krilis.dev@gmail.com</a>)
 
+
 <b>GAME DESIGN</b>: 
 - Odysseas Tsiridis (<a href = "odysseastsiridis@gmail.com">odysseastsiridis@gmail.com</a>)
 - Christos Krilis (<a href = "christos.krilis.dev@gmail.com">christos.krilis.dev@gmail.com</a>)
+
 
 <b>TILES DESIGN</b>: 
 - Peter Johnson (<a href = "pegiannos@gmail.com">pegiannos@gmail.com</a>)
 
 <b>NARRATIVE DESIGNER</b>: 
 - Pavlos Laguretos  (<a href = "plaguretos@gmail.com">plaguretos@gmail.com</a>)
+
 
 
 SPECIAL THANKS : <b>eΝVy Softworks</b>
