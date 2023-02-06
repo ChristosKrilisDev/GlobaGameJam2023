@@ -18,16 +18,20 @@ You might find valuable minerals while digging. Turn those in to the king for ex
 <b>Installation Instractions</b>
 <br>
 A project created at the Global Game Jam 2023:  <a href = "https://globalgamejam.org/2023/games/royal-gardener-4">Read the instructions and download it here</a>
+<br>
 Itch.io :  <a href = "https://christoskrilis.itch.io/royal-gardener">Read the instructions and download it here</a>
 
+<br>
 <b>How To Play : Left Mouse Click to dig Right Mouse Click to place Radar</b>
 
 <p><img width="50%" src="GGJ2023/ReadMe/2.png"></p>
 <p><img width="50%" src="GGJ2023/ReadMe/3.png"></p>
 
 <br>
+
+------------
 Credits
-============
+
 
 Royal Gardener Development Team
 
