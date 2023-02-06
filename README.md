@@ -1,6 +1,6 @@
 # GlobaGameJam2023
 
-<img width="50%" src="ReadMe/1.png">
+<img width="50%" src="GGJ2023/ReadMe/1.png">
 
 https://christoskrilis.itch.io/royal-gardener
 
@@ -14,5 +14,5 @@ You might find valuable minerals while digging. Turn those in to the king for ex
 
 How To Play : Left Mouse Click to dig Right Mouse Click to place Radar
 
-<img width="50%" src="ReadMe/2.png">
-<img width="50%" src="ReadMe/3.png">
+<img width="50%" src="GGJ2023/ReadMe/2.png">
+<img width="50%" src="GGJ2023/ReadMe/3.png">
