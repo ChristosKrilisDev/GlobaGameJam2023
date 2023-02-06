@@ -36,12 +36,12 @@ Royal Gardener Development Team
 
 <b>PROGRAMMING</b>: 
 - Christos Krilis (<a href = "christos.krilis.dev@gmail.com">christos.krilis.dev@gmail.com</a>)
-- Kostas Tom Papaioannou (<a href = "tom-papaioannou@outlook.com">tom-papaioannou@outlook.com</a>)
+- Tom Papaioannou (<a href = "tom-papaioannou@outlook.com">tom-papaioannou@outlook.com</a>)
 - Peter Johnson (<a href = "pegiannos@gmail.com">pegiannos@gmail.com</a>)
 
 
 <b>TECHNICAL ANIMATION</b>: 
-- Kostas Tom Papaioannou (<a href = "tom-papaioannou@outlook.com">tom-papaioannou@outlook.com</a>)
+- Tom Papaioannou (<a href = "tom-papaioannou@outlook.com">tom-papaioannou@outlook.com</a>)
 - Christos Krilis (<a href = "christos.krilis.dev@gmail.com">christos.krilis.dev@gmail.com</a>)
 
 
