@@ -32,7 +32,7 @@ public class CharacterControls : MonoBehaviour
         OnMouseOver();
         CheckMouseInput();
     }
-
+    
     private void OnMouseOver()
     {
         // if(_focusedGameObject) return;
@@ -54,9 +54,7 @@ public class CharacterControls : MonoBehaviour
         _focusedGameObject = tile.gameObject;
         PopUpAnimation(_focusedGameObject.transform);
     }
-
-
-
+    
     private void CheckMouseInput()
     {
         CheckLeftMouseClick();
@@ -66,6 +64,7 @@ public class CharacterControls : MonoBehaviour
     private void CheckLeftMouseClick()
     {
         if (!Input.GetMouseButtonDown(0)) return;
+        // Well... Shit
         RayCastDetection(true);
     }
 

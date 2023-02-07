@@ -16,6 +16,7 @@ MonoBehaviour:
   HideTile: {fileID: -887179507, guid: b5ebe238cf42faa489da568b1e259baf, type: 3}
   MiddleTile: {fileID: -996976715, guid: d6753d28ca556d447954bbc3bfb40538, type: 3}
   BrokenRoot: {fileID: 630926261, guid: d6c2d36cfe4511d4d956ed348c3eebcd, type: 3}
+  BrokenColor: {r: 1, g: 0.8066038, b: 0.8066038, a: 1}
   Root: {fileID: 79137395, guid: d6c2d36cfe4511d4d956ed348c3eebcd, type: 3}
   Gem: {fileID: -572352774, guid: d6753d28ca556d447954bbc3bfb40538, type: 3}
   ThemeSong: {fileID: 8300000, guid: 787da3db8d403a345a0696a03162d1d2, type: 3}
